@@ -1,29 +1,21 @@
 # minecraft-vuejs
 
-## Project setup
-```
-npm install
-```
+## Lancer le server
 
-### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Pour copier le projet
+
 ```
-npm run build
+git clone https://github.com/protypangel/Minecraft-VueJs.git
 ```
 
-### Run your tests
-```
-npm run test
-```
+### Pour envoyer merci de tapez cette commande /!\ La branch master sera bloqué pour empecher les fail
 
-### Lints and fixes files
 ```
-npm run lint
+git add .
+git commit -m “message du travail fournit”
+git push --set-upstream origin develop
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
