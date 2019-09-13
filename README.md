@@ -18,13 +18,19 @@ git clone https://github.com/protypangel/Minecraft-VueJs.git
 Chaque commit devra se faire dans sa branche
 Pour changer de branch:
  - Pour la branch de mehdi
- - Pour la branch de natha
- - Pour la branch de amine
- 
- 
 ```
 git checkout mehdi
 ```
+ - Pour la branch de natha
+```
+git checkout natha
+```
+ - Pour la branch de amine
+```
+git checkout amine
+```
+ 
+ 
 Pour commit dans sa branch:
 ```
 git add .
