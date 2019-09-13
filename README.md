@@ -35,5 +35,5 @@ Pour commit dans sa branch:
 ```
 git add .
 git commit -m “message du travail fournit”
-git push --set-upstream origin develop
+git push
 ```
