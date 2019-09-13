@@ -12,7 +12,7 @@ npm run serve
 git clone https://github.com/protypangel/Minecraft-VueJs.git
 ```
 
-### Pour envoyer merci de tapez cette commande /!\ La branch master sera bloqué pour empecher les fails
+### Pour envoyer merci de tapez cette commande <br> /!\ La branch master sera bloqué pour empecher les fails
 
 ```
 git add .
