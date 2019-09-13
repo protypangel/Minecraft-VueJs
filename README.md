@@ -35,5 +35,6 @@ Pour commit dans sa branch:
 ```
 git add .
 git commit -m “message du travail fournit”
-git push
+git push --set-upstream origin ["Nom_de_la_branch"]
 ```
+En comprenant certe que ["Nom_de_la_branch"] est à remplacer par le nom de votre branch
