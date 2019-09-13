@@ -15,8 +15,21 @@ git clone https://github.com/protypangel/Minecraft-VueJs.git
 
 ### Pour envoyer merci de tapez cette commande <br> /!\ La branch master sera bloqué pour empecher les fails
 
+Chaque commit devra se faire dans sa branche
+Pour changer de branch:
+ - Pour la branch de mehdi
+ - Pour la branch de natha
+ - Pour la branch de amine
+ 
+ 
+```
+git checkout mehdi
+```
+Pour commit dans sa branch:
 ```
 git add .
 git commit -m “message du travail fournit”
 git push --set-upstream origin develop
 ```
+
+### Pour 
