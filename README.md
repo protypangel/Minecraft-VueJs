@@ -1,5 +1,6 @@
 # minecraft-vuejs
-
+## Description du projet
+## Commandes
 ### Lancer le server
 
 ```
