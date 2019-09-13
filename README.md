@@ -1,6 +1,6 @@
 # minecraft-vuejs
 
-## Lancer le server
+### Lancer le server
 
 ```
 npm run serve
