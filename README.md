@@ -1,5 +1,22 @@
 # minecraft-vuejs
 ## Description du projet
+### Utilité du site internet
+Ce site internet a pour but de présenté minecraft.
+Vous pouvez ainsi connaitre l'utilisation des stuffs, enchantements, mobs, biomes du jeu.
+### Comment utilisé le site internet
+Si ce site internet nécessite des explications ses différents composants, c'est ici que vous les connaitriez tous et les comprendrez:
+ - Sur le bouttons admin
+ 
+Voici ce qui ce passe quand vous êtes déconnectez et rester sur le bouton se connectez 
+
+<img src="README/image/button_hover.gif"/>
+
+ - Sur le menu
+ 
+ Voici ce qui ce passe quand vous passez d'un element à un autre
+ 
+ <img src="README/image/menu_hover.gif"/>
+ 
 ## Commandes
 ### Lancer le server
 
