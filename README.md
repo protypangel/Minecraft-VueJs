@@ -8,6 +8,7 @@ Si ce site internet nécessite des explications ses différents composants, c'es
  - Sur le bouttons admin
 Voici ce qui ce passe quand vous êtes déconnectez et rester sur le bouton se connectez
   <img src="README/image/button_hover.gif" />
+  
 ## Commandes
 ### Lancer le server
 
