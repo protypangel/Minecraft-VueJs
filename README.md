@@ -1,29 +1,40 @@
 # minecraft-vuejs
+## Description du projet
+## Commandes
+### Lancer le server
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Pour copier le projet
+
 ```
-npm run build
+git clone https://github.com/protypangel/Minecraft-VueJs.git
 ```
 
-### Run your tests
-```
-npm run test
-```
+### Pour envoyer merci de tapez cette commande <br> /!\ La branch master sera bloqué pour empecher les fails
 
-### Lints and fixes files
+Chaque commit devra se faire dans sa branche
+Pour changer de branch, pour:
+ - Mehdi
 ```
-npm run lint
+git checkout mehdi
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ - Natha
+```
+git checkout natha
+```
+ - Amine
+```
+git checkout amine
+```
+ 
+ 
+Pour commit dans sa branch:
+```
+git add .
+git commit -m “message du travail fournit”
+git push --set-upstream origin ["Nom_de_la_branch"]
+```
+En comprenant certe que ["Nom_de_la_branch"] est à remplacer par le nom de votre branch
