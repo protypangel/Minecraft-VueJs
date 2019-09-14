@@ -7,7 +7,7 @@ Vous pouvez ainsi connaitre l'utilisation des stuffs, enchantements, mobs, biome
 Si ce site internet nécessite des explications ses différents composants, c'est ici que vous les connaitriez tous et les comprendrez:
  - Sur le bouttons admin
 Voici ce qui ce passe quand vous êtes déconnectez et rester sur le bouton se connectez
-  <img src="README/image/button_hover.png" />
+  <img src="README/image/button_hover.gif" />
 ## Commandes
 ### Lancer le server
 
