@@ -5,6 +5,16 @@ Ce site internet a pour but de présenté minecraft.
 Vous pouvez ainsi connaitre l'utilisation des stuffs, enchantements, mobs, biomes du jeu.
 ### Comment utilisé le site internet
 Si ce site internet nécessite des explications ses différents composants, c'est ici que vous les connaitriez tous et les comprendrez:
+ - Si vous enlevez JavaScript
+ 
+ Comment enlever javascript ? très simple allant ici
+ 
+ <img src="README/image/how_to_disable_javascript.png">
+
+Mais si vous le faites comme même alors le site vous afficheras ceux-ci
+
+<img src="README/image/disable_javascript.png">
+
  - Sur le bouttons admin
  
 Voici ce qui ce passe quand vous êtes déconnectez et rester sur le bouton se connectez 
