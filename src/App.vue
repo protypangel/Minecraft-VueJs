@@ -17,13 +17,6 @@
         <Mobs  v-if="webConponentWatch === 3"/>
       </v-content>
     </v-app>
-    <div id="independantPage" v-bind:style="independantPage.style">
-      <div v-bind:style="independantPage.close.style">
-        <p v-bind:style="independantPage.close.move.style" v-on:click="DragIndependantPage()" v-on:click.stop="DropIndependantPage()"></p> <!-- Probleme quoi ajouter pour qu'il comprend bouger quand je suis en mode boutton sourie préssé et boutton sourrie non préssé-->
-        <p v-bind:style="independantPage.close.buttonX.style" v-on:click="clickTocloseIndependantPage()">X</p>
-      </div>
-      <div id="contenentIndependantPage"></div>
-    </div>
   </div>
 </template>
 
@@ -79,48 +72,7 @@ export default {
       intervalIDTime: 1000.0 / 15.0
       /* */
     },
-    webConponentWatch: 0, // What's component need to be watch 0:Item, 1:Enchentment, 2:Biome, 3:Mobs
-    independantPage: { // Independant page
-      style: { // Style of it
-        width: `500px`,
-        height: `500px`,
-        backgroundColor: `red`,
-        position: `absolute`,
-        top: `50%`,
-        left: `50%`,
-        transform: `translate(-50%,-50%)`,
-        border: `solid black 5px`,
-        display: ``
-      },
-      close: { // Menu of independant page
-        style: { // Style of it
-          backgroundColor: `grey`,
-          borderBottom: `solid black 5px`,
-          height: `33px`
-        },
-        move: { // Move div
-          style: { // Style of it
-            width: `94%`,
-            height: `-webkit-fill-available`,
-            float: `left`
-          }
-        },
-        buttonX: { // Button close
-          style: { // Style of it
-            width: `fit-content`,
-            float: `left`,
-            borderLeft: `5px solid black`,
-            padding: `5px`,
-            cursor: `pointer`,
-            userSelect: `none`
-          },
-          mouse: { // Initialise position of mouse
-            top: `0`,
-            left: `0`
-          }
-        }
-      }
-    }
+    webConponentWatch: 0 // What's component need to be watch 0:Item, 1:Enchentment, 2:Biome, 3:Mobs
   }),
   methods: {
     hoverMenuElement: function (element) { // Change the pointing list's element's backgroundColor into black
@@ -153,15 +105,6 @@ export default {
     },
     notHoverAdminButton: function () { // Delete the last animate of admin's button
       clearInterval(this.admin.intervalID)
-    },
-    clickTocloseIndependantPage: function () { // Close IndependantPage
-      this.independantPage.style.display = `none`
-    },
-    DragIndependantPage: function () { // Drag IndependantPage
-      console.log(`here`)
-    },
-    DropIndependantPage: function () { // Drop IndependantPage
-      console.log('here2')
     }
   }
 }
