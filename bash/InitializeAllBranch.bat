@@ -31,39 +31,67 @@ exit
 if %new_argument% neq master (
     goto amine
 ) else (
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch amine
     git pull
-    git branch master
+    git merge master
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch natha
     git pull
-    git branch master
+    git merge master
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch mehdi
     git pull
-    git branch master
+    git merge master
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
 )
 exit
 :amine
 if %new_argument% neq amine (
     goto natha
 ) else (
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch natha
     git pull
-    git branch amine
+    git merge amine
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch mehdi
     git pull
-    git branch amine
+    git merge amine
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
 )
 exit
 :natha
 if %new_argument% neq natha (
     goto mehdi
 ) else (
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch amine
     git pull
-    git branch natha
+    git merge natha
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch mehdi
     git pull
-    git branch natha
+    git merge natha
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
 )
 exit
 :mehdi
@@ -71,12 +99,20 @@ if %new_argument% neq mehdi (
     echo Votre argument n'es pas dans la liste definit
     goto no_argument
 ) else (
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch amine
     git pull
-    git branch master
+    git merge master
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
+    ::Changement de branch, puis merge puis push tout sur le serveur github
     git branch natha
     git pull
-    git branch master
+    git merge master
+    git add .
+    git commit -m "Initialisation de la branch par rapport à :"%new_argument%
+    git push
 )
 exit
 
