@@ -1,0 +1,21 @@
+{
+    "items":[
+        {
+            "nom":"",
+            "id":0,
+            "image": {
+                "visuel": "",
+                "craft": ""
+            },
+            "description":"",
+            "parent": [
+                { "id": 0, "quantite":0 },
+                { "id": 1, "quantite":0 }
+            ],
+            "enfant": [
+                { "id": 0 },
+                { "id": 1 }
+            ]
+        }
+    ]
+}
