@@ -32,21 +32,21 @@ if %new_argument% neq master (
     goto amine
 ) else (
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch amine
+    git checkout amine
     git pull
     git merge master
     git add .
     git commit -m "Initialisation de la branch par rapport à :"%new_argument%
     git push
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch natha
+    git checkout natha
     git pull
     git merge master
     git add .
     git commit -m "Initialisation de la branch par rapport à :"%new_argument%
     git push
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch mehdi
+    git checkout mehdi
     git pull
     git merge master
     git add .
@@ -59,14 +59,14 @@ if %new_argument% neq amine (
     goto natha
 ) else (
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch natha
+    git checkout natha
     git pull
     git merge amine
     git add .
     git commit -m "Initialisation de la branch par rapport à :"%new_argument%
     git push
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch mehdi
+    git checkout mehdi
     git pull
     git merge amine
     git add .
@@ -79,14 +79,14 @@ if %new_argument% neq natha (
     goto mehdi
 ) else (
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch amine
+    git checkout amine
     git pull
     git merge natha
     git add .
     git commit -m "Initialisation de la branch par rapport à :"%new_argument%
     git push
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch mehdi
+    git checkout mehdi
     git pull
     git merge natha
     git add .
@@ -100,14 +100,14 @@ if %new_argument% neq mehdi (
     goto no_argument
 ) else (
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch amine
+    git checkout amine
     git pull
     git merge master
     git add .
     git commit -m "Initialisation de la branch par rapport à :"%new_argument%
     git push
     ::Changement de branch, puis merge puis push tout sur le serveur github
-    git branch natha
+    git checkout natha
     git pull
     git merge master
     git add .
