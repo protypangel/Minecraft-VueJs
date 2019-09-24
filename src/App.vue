@@ -2,13 +2,25 @@
   <div>
     <menu id="menu">
       <ul  v-bind:style="styleMenu">
+        <!-- List's element -->
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(0)" v-on:mouseout="notHoverMenuElement(0)" v-on:click="changeWebContent(0)">Item</li>
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(1)" v-on:mouseout="notHoverMenuElement(1)" v-on:click="changeWebContent(1)">Enchentment</li>
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Biome</li>
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(3)" v-on:mouseout="notHoverMenuElement(3)" v-on:click="changeWebContent(3)">Mobs</li>
-        <li v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()"> {{ admin.menu_text }}</li>
+        <!-- If the person isn't connect -->
+        <li v-if="admin.connect.panel.watch" v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()" v-on:click="connect()"> {{ admin.menu_text }}</li>
+        <div v-if="admin.connect.panel.watch" v-bind:style="admin.connect.panel.style">
+          <form id="connect">
+            <input id="speudo" type="text" v-bind:style="admin.connect.panel.form.style[0]" v-bind:placeholder="admin.connect.panel.form.placeholder[0].text">
+            <input id="password" type="password" v-bind:style="admin.connect.panel.form.style[1]" v-bind:placeholder="admin.connect.panel.form.placeholder[1].text">
+            <div v-bind:style="admin.connect.panel.form.style[2]" v-on:click="connectForm()"> {{ admin.connect.panel.form.placeholder[2].text }} </div>
+          </form>
+        </div>
+        <div v-else></div>
+        <!-- -->
       </ul>
     </menu>
+    <!-- Content page -->
     <v-app>
       <v-content>
         <Item  v-if="webConponentWatch === 0"/>
@@ -69,7 +81,70 @@ export default {
       animateButtonRGBA: 0,
       animatePossitive: true,
       intervalID: 0,
-      intervalIDTime: 1000.0 / 15.0
+      intervalIDTime: 1000.0 / 15.0,
+      /* connect panel and other */
+      connect: {
+        isConnect: false, // Admin is connect
+        identifiant: { speudo: ``, password: `` }, // Element of admin
+        panel: { // Panel connect
+          watch: true, // This the panel connect
+          style: {
+            backgroundColor: `black`,
+            width: `136px`,
+            height: `130px`,
+            position: `absolute`,
+            margin: `0`,
+            padding: `0`,
+            right: `0`,
+            top: `48px`,
+            zIndex: `1`
+          },
+          form: { // Form of connect panel
+            placeholder: [ // Table of placeholder
+              {
+                text: `speudo:`
+              },
+              {
+                text: `password:`
+              },
+              {
+                text: `valider`
+              }
+            ],
+            style: [ // Table's style
+              {
+                backgroundColor: `white`,
+                border: `5px solid rgb(142,105,105)`,
+                width: `100px`,
+                marginTop: `10px`,
+                marginLeft: `20px`,
+                marginRight: `20px`,
+                textAlign: `center`
+              },
+              {
+                backgroundColor: `white`,
+                border: `5px solid rgb(142,105,105)`,
+                width: `100px`,
+                marginTop: `10px`,
+                marginLeft: `20px`,
+                marginRight: `20px`,
+                textAlign: `center`
+              },
+              {
+                backgroundColor: `white`,
+                border: `5px solid rgb(142,105,105)`,
+                width: `100px`,
+                marginTop: `10px`,
+                marginLeft: `20px`,
+                marginRight: `20px`,
+                textAlign: `center`,
+                cursor: `pointer`,
+                userSelect: `none`
+              }
+            ]
+          }
+        }
+      }
       /* */
     },
     webConponentWatch: 0 // What's component need to be watch 0:Item, 1:Enchentment, 2:Biome, 3:Mobs
@@ -105,6 +180,21 @@ export default {
     },
     notHoverAdminButton: function () { // Delete the last animate of admin's button
       clearInterval(this.admin.intervalID)
+    },
+    connect: function () { // Click to connect
+      // If the admin isnt connect display the panel to connect
+      if (!this.admin.connect.isConnect) {
+        this.admin.connect.panel.watch = !this.admin.connect.panel.watch
+      }
+    },
+    connectForm: function () { // Try to connect
+      const speudo = document.getElementById('speudo').value
+      const password = document.getElementById('password').value
+      console.log(speudo, password)
+      // If the pseudo and password who is crypt is equals of speudo and password variabl
+      // => this.admin.connect.isConnect = true
+      // => this.admin.connect.panel.watch = false
+      // => this.admin.connect.identifiant.pseudo = pseudo & this.admin.connect.identifiant.password = password
     }
   }
 }
