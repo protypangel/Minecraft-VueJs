@@ -191,10 +191,7 @@ export default {
       }
     },
     connectForm: function () { // Try to connect
-      this.axios.post('http://localhost:4000/api/test', {
-        login: 'toto',
-        password: 'tata'
-      })
+      this.axios.get('http://localhost:4000/api/test', {})
         .then(jsondata => console.log(`response is:`, jsondata.data))
         .catch(error => console.log(`l'erreur est:`, error))
     /*
