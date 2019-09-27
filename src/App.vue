@@ -8,12 +8,12 @@
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Biome</li>
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(3)" v-on:mouseout="notHoverMenuElement(3)" v-on:click="changeWebContent(3)">Mobs</li>
         <!-- If the person isn't connect -->
-        <li v-if="admin.connect.panel.watch" v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()" v-on:click="connect()"> {{ admin.menu_text }}</li>
+        <li v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()" v-on:click="connect()"> {{ admin.menu_text }}</li>
         <div v-if="admin.connect.panel.watch" v-bind:style="admin.connect.panel.style">
           <form id="connect">
             <input id="speudo" type="text" v-bind:style="admin.connect.panel.form.style[0]" v-bind:placeholder="admin.connect.panel.form.placeholder[0].text">
             <input id="password" type="password" v-bind:style="admin.connect.panel.form.style[1]" v-bind:placeholder="admin.connect.panel.form.placeholder[1].text">
-            <div v-bind:style="admin.connect.panel.form.style[2]" v-on:click="connectForm()"> {{ admin.connect.panel.form.placeholder[2].text }} </div>
+            <v-btn v-on:click="connectForm" v-bind:style="admin.connect.panel.form.style[2]"> {{ admin.connect.panel.form.placeholder[2].text }}</v-btn>
           </form>
         </div>
         <div v-else></div>
@@ -144,6 +144,9 @@ export default {
             ]
           }
         }
+      },
+      url: {
+        login: `http://localhost:4000/api/login`
       }
       /* */
     },
@@ -188,13 +191,33 @@ export default {
       }
     },
     connectForm: function () { // Try to connect
-      const speudo = document.getElementById('speudo').value
+      this.axios.post('http://localhost:4000/api/test', {
+        login: 'toto',
+        password: 'tata'
+      })
+        .then(jsondata => console.log(`response is:`, jsondata.data))
+        .catch(error => console.log(`l'erreur est:`, error))
+    /*
+      const pseudo = document.getElementById('speudo').value
       const password = document.getElementById('password').value
-      console.log(speudo, password)
-      // If the pseudo and password who is crypt is equals of speudo and password variabl
-      // => this.admin.connect.isConnect = true
-      // => this.admin.connect.panel.watch = false
-      // => this.admin.connect.identifiant.pseudo = pseudo & this.admin.connect.identifiant.password = password
+      if (pseudo === `` || password === ``) {
+        if (pseudo === ``) {
+          this.admin.connect.panel.form.style[0].border = `5px solid red`
+        }
+        if (password === ``) {
+          this.admin.connect.panel.form.style[1].border = `5px solid red`
+        }
+      } else {
+        this.admin.connect.panel.form.style[0].border = `5px solid rgb(142,105,105)`
+        this.admin.connect.panel.form.style[1].border = `5px solid rgb(142,105,105)`
+        this.axios.post(this.admin.url.login, {
+          login: pseudo,
+          password: password
+        })
+          .then(jsondata => console.log(`response is:`, jsondata.data))
+          .catch(error => console.log(`l'erreur est:`, error))
+      }
+  */
     }
   }
 }
