@@ -15,7 +15,10 @@ app.use(session({
 }))
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:8080'
+}))
 
 const users = [{
   username: 'admin',
@@ -23,7 +26,7 @@ const users = [{
 }]
 
 app.get('/api/test', (req, res) => {
-  console.log('ce console.log est appelé au bon moment')
+  //console.log('ce console.log est appelé au bon moment')
   res.json([
     {
       title: 'truc',
@@ -37,8 +40,8 @@ app.get('/api/test', (req, res) => {
 
 app.post('/api/login', (req, res) => {
   console.log('here')
-  // console.log('req.body', req.body)
-  // console.log('req.query', req.query)
+  console.log('req.body', req.body)
+  console.log('req.query', req.query)
   if (!req.session.userId) {
     const user = users.find(u => u.username === req.body.username && u.password === req.body.password)
     if (!user) {
