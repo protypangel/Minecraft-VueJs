@@ -8,7 +8,7 @@ const app = express()
 
 /* */
 app.use(session({
-  secret: 'blablabla',
+  secret: 'piedpaper',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // We arent in https but in http
@@ -21,12 +21,11 @@ app.use(cors({
 }))
 
 const users = [{
-  username: 'admin',
-  password: 'changethispassword'
+  username: 'protypangel',
+  password: 'protypangel'
 }]
 
 app.get('/api/test', (req, res) => {
-  //console.log('ce console.log est appelé au bon moment')
   res.json([
     {
       title: 'truc',
@@ -39,28 +38,19 @@ app.get('/api/test', (req, res) => {
 })
 
 app.post('/api/login', (req, res) => {
-  console.log('here')
-  console.log('req.body', req.body)
-  console.log('req.query', req.query)
-  if (!req.session.userId) {
-    const user = users.find(u => u.username === req.body.username && u.password === req.body.password)
-    if (!user) {
-      // gérez le cas où on n'a pas trouvé d'utilisateur correspondant
-      res.json({
-        message: `Vous êtes incconu au bataillon d'exploration`
-      })
+  if (!req.session.connect) { // If the personne isnt connect
+    const user = users.find(u => u.username === req.body.username && u.password === req.body.password) // Find someone who have this username
+    if (!user) { // No one exist with that login
+      res.json({ message: `Vous êtes incconu au bataillon d'exploration` })
     } else {
-      // connect the user
-      req.session.userId = 1000 // connect the user, and change the id
-      res.json({
-        message: 'connected'
-      })
+      /* Connect him */
+      req.session.connect = true
+      res.json({ message: 'connected' })
+      /* */
     }
   } else {
     res.status(401)
-    res.json({
-      message: 'you are already connected'
-    })
+    res.json({ message: 'you are already connected' })
   }
 })
 /* Set if the personne go into /api/logout with get to log out */

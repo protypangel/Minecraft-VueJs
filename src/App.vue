@@ -1,32 +1,33 @@
 <template>
   <div>
     <menu id="menu">
-      <ul  v-bind:style="styleMenu">
+      <ul  v-bind:class="header.css.class.list.contener">
         <!-- List's element -->
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(0)" v-on:mouseout="notHoverMenuElement(0)" v-on:click="changeWebContent(0)">Item</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(1)" v-on:mouseout="notHoverMenuElement(1)" v-on:click="changeWebContent(1)">Enchentment</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Biome</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(3)" v-on:mouseout="notHoverMenuElement(3)" v-on:click="changeWebContent(3)">Mobs</li>
+        <li v-bind:class="header.css.class.list.element.item"        v-on:click="bodyContent(0)"> {{ header.word.list.item          }} </li>
+        <li v-bind:class="header.css.class.list.element.enchentment" v-on:click="bodyContent(1)"> {{ header.word.list.enchentment   }} </li>
+        <li v-bind:class="header.css.class.list.element.biome"       v-on:click="bodyContent(2)"> {{ header.word.list.biome         }} </li>
+        <li v-bind:class="header.css.class.list.element.mobs"        v-on:click="bodyContent(3)"> {{ header.word.list.mobs          }} </li>
         <!-- If the person isn't connect -->
-        <li v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()" v-on:click="connect()"> {{ admin.menu_text }}</li>
-        <div v-if="admin.connect.panel.watch" v-bind:style="admin.connect.panel.style">
-          <form id="connect">
-            <input id="speudo" type="text" v-bind:style="admin.connect.panel.form.style[0]" v-bind:placeholder="admin.connect.panel.form.placeholder[0].text">
-            <input id="password" type="password" v-bind:style="admin.connect.panel.form.style[1]" v-bind:placeholder="admin.connect.panel.form.placeholder[1].text">
-            <v-btn v-on:click="connectForm" v-bind:style="admin.connect.panel.form.style[2]"> {{ admin.connect.panel.form.placeholder[2].text }}</v-btn>
+        <div v-if="!header.connect.isConnected">
+          <li  v-bind:style="header.css.animate.buttonConnect.style" v-bind:class="header.css.class.list.element.connect" v-on:mouseover="hoverAnimateConnectButton" v-on:mouseout="nothoverAnimateConnectButton" v-on:click="connect()"> {{ header.word.list.connect }}</li>
+            <form v-if="header.connect.panelConnect"  v-bind:class="header.css.class.connect.contener">
+              <input v-bind:id="header.css.id.pseudo"    type="text"        v-bind:class="header.css.class.connect.element.pseudo"    v-bind:placeholder="header.word.connect.pseudo">
+              <input v-bind:id="header.css.id.password"  type="password"    v-bind:class="header.css.class.connect.element.password"  v-bind:placeholder="header.word.connect.password">
+              <v-btn v-on:click="connectForm"                                      v-bind:class="header.css.class.connect.element.send" > {{ header.word.connect.send }} </v-btn>
           </form>
         </div>
-        <div v-else></div>
+        <div v-else>
+        </div>
         <!-- -->
       </ul>
     </menu>
     <!-- Content page -->
     <v-app>
       <v-content>
-        <Item  v-if="webConponentWatch === 0"/>
-        <Enchentment  v-if="webConponentWatch === 1"/>
-        <Biome v-if="webConponentWatch === 2"/>
-        <Mobs  v-if="webConponentWatch === 3"/>
+        <Item  v-if="body.watch === 0"/>
+        <Enchentment  v-if="body.watch === 1"/>
+        <Biome v-if="body.watch === 2"/>
+        <Mobs  v-if="body.watch === 3"/>
       </v-content>
     </v-app>
   </div>
@@ -47,151 +48,98 @@ export default {
     Mobs // Different's minecraft's mobs
   },
   data: () => ({
-    /* Differents style of the list's element */
-    styleMenu: { // Style of the list
-      listStyleType: `none`,
-      margin: `0`,
-      padding: `0`,
-      overflow: `hidden`,
-      backgroundColor: `#333333`
-    },
-    styleMenuList: { // Style of list's element
-      float: `left`,
-      color: `white`,
-      padding: `15px`,
-      cursor: `pointer`,
-      userSelect: `none`
-    },
-    /* */
-    admin: { // Button Admin (Style, Text, Animate)
-      menu_style: { // Style of it
-        float: `right`,
-        padding: `5px`,
-        color: `white`,
-        cursor: `pointer`,
-        userSelect: `none`,
-        borderRadius: `30px`,
-        border: `5px solid rgba(142,105,105,1)`,
-        backgroundColor: `rgba(142,105,105,0)`,
-        transform: `translate(0px, 10%)`,
-        marginRight: `15px`
-      },
-      menu_text: `Se connecter`, // Text
-      /* Animate it */
-      animateButtonRGBA: 0,
-      animatePossitive: true,
-      intervalID: 0,
-      intervalIDTime: 1000.0 / 15.0,
-      /* connect panel and other */
-      connect: {
-        isConnect: false, // Admin is connect
-        identifiant: { speudo: ``, password: `` }, // Element of admin
-        panel: { // Panel connect
-          watch: true, // This the panel connect
-          style: {
-            backgroundColor: `black`,
-            width: `136px`,
-            height: `130px`,
-            position: `absolute`,
-            margin: `0`,
-            padding: `0`,
-            right: `0`,
-            top: `48px`,
-            zIndex: `1`
+    header: {
+      css: {
+        class: {
+          list: {
+            contener: `list`,
+            element: {
+              item: `element`,
+              enchentment: `element`,
+              biome: `element`,
+              mobs: `element`,
+              connect: `connect`
+            }
           },
-          form: { // Form of connect panel
-            placeholder: [ // Table of placeholder
-              {
-                text: `speudo:`
-              },
-              {
-                text: `password:`
-              },
-              {
-                text: `valider`
-              }
-            ],
-            style: [ // Table's style
-              {
-                backgroundColor: `white`,
-                border: `5px solid rgb(142,105,105)`,
-                width: `100px`,
-                marginTop: `10px`,
-                marginLeft: `20px`,
-                marginRight: `20px`,
-                textAlign: `center`
-              },
-              {
-                backgroundColor: `white`,
-                border: `5px solid rgb(142,105,105)`,
-                width: `100px`,
-                marginTop: `10px`,
-                marginLeft: `20px`,
-                marginRight: `20px`,
-                textAlign: `center`
-              },
-              {
-                backgroundColor: `white`,
-                border: `5px solid rgb(142,105,105)`,
-                width: `100px`,
-                marginTop: `10px`,
-                marginLeft: `20px`,
-                marginRight: `20px`,
-                textAlign: `center`,
-                cursor: `pointer`,
-                userSelect: `none`
-              }
-            ]
+          connect: {
+            contener: `connectPanel`,
+            element: {
+              pseudo: `pseudo`,
+              password: `password`,
+              send: `send`
+            }
+          }
+        },
+        id: {
+          pseudo: `speudo`,
+          password: `password`
+        },
+        animate: {
+          buttonConnect: {
+            style: {
+              backgroundColor: `rgba(142,105,105,0)`
+            },
+            RGBA: 0.0,
+            id: -1,
+            duration: 1000.0 / 15.0,
+            positif: true
           }
         }
       },
-      url: {
-        login: `http://localhost:4000/api/login`
+      word: {
+        list: {
+          item: `Item`,
+          enchentment: `Enchentment`,
+          biome: `Biome`,
+          mobs: `Mobs`,
+          connect: `Se connecter`
+        },
+        connect: {
+          pseudo: `pseudo:`,
+          password: `password:`,
+          send: `valider`
+        }
+      },
+      connect: {
+        isConnected: false,
+        panelConnect: true
       }
-      /* */
     },
-    webConponentWatch: 0 // What's component need to be watch 0:Item, 1:Enchentment, 2:Biome, 3:Mobs
+    body: {
+      watch: 0
+    },
+    url: {
+      login: `http://localhost:4000/api/login`
+    }
   }),
   methods: {
-    hoverMenuElement: function (element) { // Change the pointing list's element's backgroundColor into black
-      document.getElementById(`menu`).childNodes[0].childNodes[element].style.backgroundColor = `black`
+    bodyContent: function (element) { // Change the components who need to be watch
+      this.body.watch = element
     },
-    notHoverMenuElement: function (element) { // Change the last pointing list's element's backgroundColor into nothing
-      document.getElementById(`menu`).childNodes[0].childNodes[element].style.backgroundColor = ``
+    hoverAnimateConnectButton: function () { // Change the admin's button's backgroundColor when i'm pointing it
+      this.header.css.animate.buttonConnect.id = setInterval(this.hoverAnimateActionConnectButton, this.header.css.animate.buttonConnect.duration)
     },
-    changeWebContent: function (element) { // Change the components who need to be watch
-      this.webConponentWatch = element
-    },
-    hoverAdminButton: function () { // Change the admin's button's backgroundColor when i'm pointing it
-      this.admin.intervalID = setInterval(this.hoverAdminButtonInterval, this.admin.intervalIDTime)
-    },
-    hoverAdminButtonInterval: function () { // Change the admin's button's backgroundColor
+    hoverAnimateActionConnectButton: function () { // Change the admin's button's backgroundColor
       /* variate color's alpha: [0;0.75] */
-      if (this.admin.animateButtonRGBA >= 0.75) {
-        this.admin.animatePossitive = false
-      } else if (this.admin.animateButtonRGBA <= 0) {
-        this.admin.animatePossitive = true
-      }
+      this.header.css.animate.buttonConnect.positif = (this.header.css.animate.buttonConnect.RGBA <= 0) ? true : ((this.header.css.animate.buttonConnect.RGBA >= 0.75) ? false : this.header.css.animate.buttonConnect.positif)
       /* Positif is add, Negative to take off */
-      if (this.admin.animatePossitive) {
-        this.admin.animateButtonRGBA += 0.025
-      } else {
-        this.admin.animateButtonRGBA -= 0.025
-      }
+      this.header.css.animate.buttonConnect.RGBA += this.header.css.animate.buttonConnect.positif ? 0.025 : -0.025
+      /* Change the backgroundColor */
+      this.header.css.animate.buttonConnect.style.backgroundColor = `rgba(142,105,105,` + this.header.css.animate.buttonConnect.RGBA + `)`
       /* */
-      this.admin.menu_style.backgroundColor = `rgba(142,105,105,` + this.admin.animateButtonRGBA + `)` // Change the backgroundColor
     },
-    notHoverAdminButton: function () { // Delete the last animate of admin's button
-      clearInterval(this.admin.intervalID)
+    nothoverAnimateConnectButton: function () { // Delete the last animate of admin's button
+      clearInterval(this.header.css.animate.buttonConnect.id)
     },
     connect: function () { // Click to connect
-      // If the admin isnt connect display the panel to connect
-      if (!this.admin.connect.isConnect) {
-        this.admin.connect.panel.watch = !this.admin.connect.panel.watch
+      if (!this.header.connect.isConnected) {
+        this.header.connect.panelConnect = !this.header.connect.panelConnect
       }
     },
     connectForm: function () { // Try to connect
-      this.axios.post('http://localhost:4000/api/login', {username:'moi', password:'toi'})
+      const pseudo = document.getElementById(this.header.css.id.pseudo).value
+      const password = document.getElementById(this.header.css.id.password).value
+      this.axios.post('http://localhost:4000/api/login', { username: pseudo, password: password })
         .then(jsondata => console.log(`response is:`, jsondata.data))
         .catch(error => console.log(`l'erreur est:`, error))
     /*
@@ -219,3 +167,58 @@ export default {
   }
 }
 </script>
+<style scoped>
+.list{
+  margin:0;
+  padding:0;
+  list-style-type:none;
+  overflow:hidden;
+  background-color:#333333;
+}
+.element{
+  float:left;
+  color:white;
+  padding:15px;
+  cursor:pointer;
+  user-select:none;
+  background-color: none;
+}
+.element:hover{
+  background-color: black;
+}
+.connect{
+  float:right;
+  padding:5px;
+  color:white;
+  cursor:pointer;
+  user-select:none;
+  border-radius:30px;
+  border:5px solid rgba(142,105,105,1);
+  transform:translate(0px, 10%);
+  margin-right:15px;
+}
+.pseudo, .password, .send{
+  background-color:white;
+  border:5px solid rgb(142,105,105);
+  width:100px;
+  margin-top:10px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align:center;
+}
+.send{
+  cursor:pointer;
+  user-select:none;
+}
+.connectPanel{
+  background-color:black;
+  width:136px;
+  height:130px;
+  position:absolute;
+  margin:0;
+  padding:0;
+  right:0;
+  top:48px;
+  z-index:1;
+}
+</style>>
