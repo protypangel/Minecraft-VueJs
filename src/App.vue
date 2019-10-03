@@ -11,8 +11,8 @@
         <div v-if="!header.connect.isConnected">
           <li  v-bind:style="header.css.animate.buttonConnect.style" v-bind:class="header.css.class.list.element.connect" v-on:mouseover="hoverAnimateConnectButton" v-on:mouseout="nothoverAnimateConnectButton" v-on:click="connect()"> {{ header.word.list.connect }}</li>
             <form v-if="header.connect.panelConnect"  v-bind:class="header.css.class.connect.contener">
-              <input v-bind:id="header.css.id.pseudo"    type="text"        v-bind:class="header.css.class.connect.element.pseudo"    v-bind:placeholder="header.word.connect.pseudo">
-              <input v-bind:id="header.css.id.password"  type="password"    v-bind:class="header.css.class.connect.element.password"  v-bind:placeholder="header.word.connect.password">
+              <input v-bind:id="header.css.id.pseudo"    v-bind:style="header.css.animate.login.style.pseudo" type="text"        v-bind:class="header.css.class.connect.element.pseudo"    v-bind:placeholder="header.word.connect.pseudo">
+              <input v-bind:id="header.css.id.password"  v-bind:style="header.css.animate.login.style.password" type="password"    v-bind:class="header.css.class.connect.element.password"  v-bind:placeholder="header.word.connect.password">
               <v-btn v-on:click="connectForm"                                      v-bind:class="header.css.class.connect.element.send" > {{ header.word.connect.send }} </v-btn>
           </form>
         </div>
@@ -83,6 +83,16 @@ export default {
             id: -1,
             duration: 1000.0 / 15.0,
             positif: true
+          },
+          login: {
+            style: {
+              pseudo: {
+                border: ``
+              },
+              password: {
+                border: ``
+              }
+            }
           }
         }
       },
@@ -139,9 +149,17 @@ export default {
     connectForm: function () { // Try to connect
       const pseudo = document.getElementById(this.header.css.id.pseudo).value
       const password = document.getElementById(this.header.css.id.password).value
-      this.axios.post('http://localhost:4000/api/login', { username: pseudo, password: password })
-        .then(jsondata => console.log(`response is:`, jsondata.data))
-        .catch(error => console.log(`l'erreur est:`, error))
+      this.axios.post(this.url.login, { username: pseudo, password: password })
+        .then(jsondata => {
+          alert(jsondata.data.message)
+          if (jsondata.data.connect) {
+            this.connectAnAdmin()
+          } else {
+            this.isntAnAdmin(pseudo === ``, password === ``, password !== `` && pseudo !== ``)
+          }
+        }).catch(error => {
+          console.log(`l'erreur est:`, error)
+        })
     /*
       const pseudo = document.getElementById('speudo').value
       const password = document.getElementById('password').value
@@ -163,6 +181,25 @@ export default {
           .catch(error => console.log(`l'erreur est:`, error))
       }
   */
+    },
+    connectAnAdmin: function () {
+      console.log('here')
+      this.header.css.animate.login.style.pseudo.border = ``
+      this.header.css.animate.login.style.password.border = ``
+      this.header.connect.isConnected = true
+      this.header.connect.panelConnect = false
+    },
+    isntAnAdmin: function (emptyPseudo, emptyPassword, otherOption) {
+      if (emptyPseudo) {
+        this.header.css.animate.login.style.pseudo.border = `5px solid red`
+      }
+      if (emptyPassword) {
+        this.header.css.animate.login.style.password.border = `5px solid red`
+      }
+      if (otherOption) {
+        this.header.css.animate.login.style.pseudo.border = `5px solid orange`
+        this.header.css.animate.login.style.password.border = `5px solid orange`
+      }
     }
   }
 }

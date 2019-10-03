@@ -38,22 +38,24 @@ app.get('/api/test', (req, res) => {
 })
 
 app.post('/api/login', (req, res) => {
-  if (!req.session.connect) { // If the personne isnt connect
-    const user = users.find(u => u.username === req.body.username && u.password === req.body.password) // Find someone who have this username
-    if (!user) { // No one exist with that login
-      res.json({ message: `Vous êtes incconu au bataillon d'exploration` })
-    } else {
-      /* Connect him */
-      req.session.connect = true
-      res.json({ message: 'connected' })
-      /* */
-    }
+  const user = users.find(u => u.username === req.body.username && u.password === req.body.password) // Find someone who have this username
+  if (!user) {
+    /* No one correspond to this user */
+    res.json({
+      message: `Vous êtes incconu au bataillon d'exploration`,
+      connect: false
+    })
   } else {
-    res.status(401)
-    res.json({ message: 'you are already connected' })
+    /* Connect him */
+    res.json({
+      message: `Bienvenue`,
+      connect: true
+    })
+    req.session.connect = true
+    /* */
   }
 })
-/* Set if the personne go into /api/logout with get to log out */
+
 app.get('/api/logout', (req, res) => {
   if (!req.session.userId) { // If the personne isnt connect
     res.status(401)
