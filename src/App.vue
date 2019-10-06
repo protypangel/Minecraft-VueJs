@@ -23,8 +23,8 @@
     <!-- Content page -->
     <v-app>
       <v-content>
-        <Item  v-if="webConponentWatch === 0"/>
-        <Enchentment  v-if="webConponentWatch === 1"/>
+        <Item v-if="webConponentWatch === 0"/>
+        <Enchentment v-if="webConponentWatch === 1"/>
         <Biome v-if="webConponentWatch === 2"/>
         <Mobs  v-if="webConponentWatch === 3"/>
       </v-content>
@@ -38,6 +38,8 @@ import Enchentment from './components/Enchentment'
 import Item from './components/Item'
 import Mobs from './components/Mobs'
 
+// var myJson = '{"result":true, "count":42}'
+// let myItems = JSON.parse('{"nom":"epee"}')
 export default {
   name: 'App',
   components: {
@@ -191,7 +193,7 @@ export default {
       }
     },
     connectForm: function () { // Try to connect
-      this.axios.post('http://localhost:4000/api/login', {username:'moi', password:'toi'})
+      this.axios.post('http://localhost:4000/api/login', { username: 'moi', password: 'toi' })
         .then(jsondata => console.log(`response is:`, jsondata.data))
         .catch(error => console.log(`l'erreur est:`, error))
     /*

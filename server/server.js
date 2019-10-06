@@ -26,7 +26,7 @@ const users = [{
 }]
 
 app.get('/api/test', (req, res) => {
-  //console.log('ce console.log est appelé au bon moment')
+  // console.log('ce console.log est appelé au bon moment')
   res.json([
     {
       title: 'truc',

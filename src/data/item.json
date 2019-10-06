@@ -1,21 +1,37 @@
-{
-    "items":[
-        {
-            "nom":"",
-            "id":0,
-            "image": {
-                "visuel": "",
-                "craft": ""
-            },
-            "description":"",
-            "parent": [
-                { "id": 0, "quantite":0 },
-                { "id": 1, "quantite":0 }
-            ],
-            "enfant": [
-                { "id": 0 },
-                { "id": 1 }
-            ]
-        }
-    ]
-}
+[
+    {
+        "nom":"epee diamant",
+        "id":0,
+        "image": {
+            "visuel": "piocheDiamant.jpg",
+            "craft": ""
+        },
+        "description":"",
+        "parent": [
+            { "id": 0, "quantite":0 },
+            { "id": 1, "quantite":0 }
+        ],
+        "enfant": [
+            { "id": 0 },
+            { "id": 1 }
+        ]
+    },
+    {
+        "nom":"epee bois",
+        "id":1,
+        "image": {
+            "visuel": "https://www.numerama.com/content/uploads/2019/05/trou-noir-astronomie-univers-espace.jpg",
+            "craft": ""
+        },
+        "description":"",
+        "parent": [
+            { "id": 0, "quantite":0 },
+            { "id": 1, "quantite":0 }
+        ],
+        "enfant": [
+            { "id": 0 },
+            { "id": 1 }
+        ]
+    }
+
+]
