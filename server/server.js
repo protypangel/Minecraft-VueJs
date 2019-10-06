@@ -20,22 +20,16 @@ app.use(cors({
   origin: 'http://localhost:8080'
 }))
 
-const users = [{
-  username: 'protypangel',
-  password: 'protypangel'
-}]
-
-app.get('/api/test', (req, res) => {
-  res.json([
-    {
-      title: 'truc',
-      content: 'machin'
-    }, {
-      title: 'truc2',
-      content: 'machin2'
-    }
-  ])
-})
+const users = [
+  {
+    username: 'protypangel',
+    password: 'protypangel'
+  },
+  {
+    username: '',
+    password: ''
+  }
+]
 
 app.post('/api/login', (req, res) => {
   const user = users.find(u => u.username === req.body.username && u.password === req.body.password) // Find someone who have this username
@@ -51,13 +45,13 @@ app.post('/api/login', (req, res) => {
       message: `Bienvenue`,
       connect: true
     })
-    req.session.connect = true
     /* */
   }
 })
 
 app.get('/api/logout', (req, res) => {
-  if (!req.session.userId) { // If the personne isnt connect
+  console.log('logout teste', req.session.username)
+  if (!req.session.username) { // If the personne isnt connect
     res.status(401)
     res.json({
       message: 'you are already disconnected'
@@ -68,18 +62,6 @@ app.get('/api/logout', (req, res) => {
       message: 'you are now disconnected'
     })
   }
-})
-/* Set if the personne go into /api/admin with get */
-app.get('/api/admin', (req, res) => {
-  if (!req.session.userId || req.session.isAdmin === false) { // If the personne isnt connect
-    res.status(401)
-    res.json({ message: 'Unauthorized' })
-    return
-  }
-
-  res.json({ // If He's connected
-    message: 'congrats, you are connected'
-  })
 })
 /* Set the port and initialize it */
 const port = process.env.PORT || 4000

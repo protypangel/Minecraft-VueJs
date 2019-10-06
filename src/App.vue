@@ -9,21 +9,29 @@
         <li v-bind:class="header.css.class.list.element.mobs"        v-on:click="bodyContent(3)"> {{ header.word.list.mobs          }} </li>
         <!-- If the person isn't connect -->
         <div v-if="!header.connect.isConnected">
-          <li  v-bind:style="header.css.animate.buttonConnect.style" v-bind:class="header.css.class.list.element.connect" v-on:mouseover="hoverAnimateConnectButton" v-on:mouseout="nothoverAnimateConnectButton" v-on:click="connect()"> {{ header.word.list.connect }}</li>
-            <form v-if="header.connect.panelConnect"  v-bind:class="header.css.class.connect.contener">
-              <input v-bind:id="header.css.id.pseudo"    v-bind:style="header.css.animate.login.style.pseudo" type="text"        v-bind:class="header.css.class.connect.element.pseudo"    v-bind:placeholder="header.word.connect.pseudo">
-              <input v-bind:id="header.css.id.password"  v-bind:style="header.css.animate.login.style.password" type="password"    v-bind:class="header.css.class.connect.element.password"  v-bind:placeholder="header.word.connect.password">
-              <v-btn v-on:click="connectForm"                                      v-bind:class="header.css.class.connect.element.send" > {{ header.word.connect.send }} </v-btn>
+          <li  v-bind:style="header.css.animate.buttonConnect.style" v-bind:class="header.css.class.list.element.connect.false" v-on:mouseover="hoverAnimateConnectButton" v-on:mouseout="nothoverAnimateConnectButton" v-on:click="connect()"> {{ header.word.list.connect.false }}</li>
+            <form v-if="header.connect.false.panelConnect"  v-bind:class="header.css.class.connect.false.contener">
+              <input v-bind:id="header.css.id.pseudo"    v-bind:style="header.css.animate.login.style.pseudo"   type="text"        v-bind:class="header.css.class.connect.false.element.pseudo"    v-bind:placeholder="header.word.connect.false.pseudo">
+              <input v-bind:id="header.css.id.password"  v-bind:style="header.css.animate.login.style.password" type="password"    v-bind:class="header.css.class.connect.false.element.password"  v-bind:placeholder="header.word.connect.false.password">
+              <v-btn v-on:click="connectForm"                                                                                      v-bind:class="header.css.class.connect.false.element.send" > {{ header.word.connect.false.send }} </v-btn>
           </form>
         </div>
+        <!-- If the person is connect -->
         <div v-else>
+          <li v-bind:class="header.css.class.list.element.connect.true" @click="seePanel"> {{ header.word.list.connect.true }}</li>
+            <form v-if="header.connect.true.panel" v-bind:class="header.css.class.connect.true.contener">
+              <v-btn tile color="#009688" v-bind:class="header.css.class.connect.true.element.modifier"   @click="buttonPressedModeChangeApi(1)">{{ header.word.connect.true.modifier }}</v-btn>
+              <v-btn tile color="#009688" v-bind:class="header.css.class.connect.true.element.ajouter"    @click="buttonPressedModeChangeApi(2)">{{ header.word.connect.true.ajouter }}</v-btn>
+              <v-btn tile color="#009688" v-bind:class="header.css.class.connect.true.element.supprimer"  @click="buttonPressedModeChangeApi(3)"> {{ header.word.connect.true.supprimer }}</v-btn>
+              <v-btn tile color="#009688" v-bind:class="header.css.class.connect.true.element.deconnection"  @click="deconnect"> {{ header.word.connect.true.deconnection }}</v-btn>
+            </form>
         </div>
         <!-- -->
       </ul>
     </menu>
     <!-- Content page -->
     <v-app>
-      <v-content>
+      <v-content v-bind:class="header.css.class.content.contener">
         <Item  v-if="body.watch === 0"/>
         <Enchentment  v-if="body.watch === 1"/>
         <Biome v-if="body.watch === 2"/>
@@ -58,16 +66,33 @@ export default {
               enchentment: `element`,
               biome: `element`,
               mobs: `element`,
-              connect: `connect`
+              connect: {
+                true: `connect`,
+                false: `connect`
+              }
             }
           },
           connect: {
-            contener: `connectPanel`,
-            element: {
-              pseudo: `pseudo`,
-              password: `password`,
-              send: `send`
+            true: {
+              contener: `connectPanel`,
+              element: {
+                modifier: `ajouter`,
+                ajouter: `modifier`,
+                supprimer: `supprimer`,
+                deconnection: `deconnection`
+              }
+            },
+            false: {
+              contener: `connectPanel`,
+              element: {
+                pseudo: `pseudo`,
+                password: `password`,
+                send: `send`
+              }
             }
+          },
+          content: {
+            contener: `contentWeb`
           }
         },
         id: {
@@ -102,29 +127,64 @@ export default {
           enchentment: `Enchentment`,
           biome: `Biome`,
           mobs: `Mobs`,
-          connect: `Se connecter`
+          connect: {
+            true: `Se connecter`,
+            false: `Se connecter`
+          }
         },
         connect: {
-          pseudo: `pseudo:`,
-          password: `password:`,
-          send: `valider`
+          false: {
+            pseudo: `pseudo:`,
+            password: `password:`,
+            send: `valider`
+          },
+          true: {
+            modifier: `modifier`,
+            ajouter: `ajouter`,
+            supprimer: `supprimer`,
+            deconnection: `deconnection`
+          }
         }
       },
       connect: {
         isConnected: false,
-        panelConnect: true
+        false: {
+          panelConnect: false
+        },
+        true: {
+          mode: 0,
+          panel: false
+        }
       }
     },
     body: {
       watch: 0
     },
-    url: {
-      login: `http://localhost:4000/api/login`
+    serverData: {
+      url: {
+        login: `http://localhost:4000/api/login`,
+        logout: `http://localhost:4000/api/logout`
+      }
     }
   }),
   methods: {
     bodyContent: function (element) { // Change the components who need to be watch
       this.body.watch = element
+    },
+    deconnect: function () {
+      this.axios.get(this.serverData.url.logout)
+        .then(jsondata => {
+          console.log('here')
+          this.header.connect.isConnected = false
+        }).catch(error => {
+          console.log(`l'erreur est:`, error)
+        })
+    },
+    buttonPressedModeChangeApi: function (element) {
+      this.header.connect.true.mode = element
+    },
+    seePanel: function () {
+      this.header.connect.true.panel = !this.header.connect.true.panel
     },
     hoverAnimateConnectButton: function () { // Change the admin's button's backgroundColor when i'm pointing it
       this.header.css.animate.buttonConnect.id = setInterval(this.hoverAnimateActionConnectButton, this.header.css.animate.buttonConnect.duration)
@@ -143,53 +203,34 @@ export default {
     },
     connect: function () { // Click to connect
       if (!this.header.connect.isConnected) {
-        this.header.connect.panelConnect = !this.header.connect.panelConnect
+        this.header.connect.false.panelConnect = !this.header.connect.false.panelConnect
       }
     },
     connectForm: function () { // Try to connect
       const pseudo = document.getElementById(this.header.css.id.pseudo).value
       const password = document.getElementById(this.header.css.id.password).value
-      this.axios.post(this.url.login, { username: pseudo, password: password })
+      this.axios.post(this.serverData.url.login, { username: pseudo, password: password })
         .then(jsondata => {
           alert(jsondata.data.message)
           if (jsondata.data.connect) {
-            this.connectAnAdmin()
+            this.connectAnAdmin(pseudo)
           } else {
             this.isntAnAdmin(pseudo === ``, password === ``, password !== `` && pseudo !== ``)
           }
         }).catch(error => {
           console.log(`l'erreur est:`, error)
         })
-    /*
-      const pseudo = document.getElementById('speudo').value
-      const password = document.getElementById('password').value
-      if (pseudo === `` || password === ``) {
-        if (pseudo === ``) {
-          this.admin.connect.panel.form.style[0].border = `5px solid red`
-        }
-        if (password === ``) {
-          this.admin.connect.panel.form.style[1].border = `5px solid red`
-        }
-      } else {
-        this.admin.connect.panel.form.style[0].border = `5px solid rgb(142,105,105)`
-        this.admin.connect.panel.form.style[1].border = `5px solid rgb(142,105,105)`
-        this.axios.post(this.admin.url.login, {
-          login: pseudo,
-          password: password
-        })
-          .then(jsondata => console.log(`response is:`, jsondata.data))
-          .catch(error => console.log(`l'erreur est:`, error))
-      }
-  */
     },
-    connectAnAdmin: function () {
-      console.log('here')
+    connectAnAdmin: function (pseudo) {
       this.header.css.animate.login.style.pseudo.border = ``
       this.header.css.animate.login.style.password.border = ``
       this.header.connect.isConnected = true
-      this.header.connect.panelConnect = false
+      this.header.connect.false.panelConnect = false
+      this.header.word.list.connect.true = pseudo
     },
     isntAnAdmin: function (emptyPseudo, emptyPassword, otherOption) {
+      this.header.css.animate.login.style.pseudo.border = ``
+      this.header.css.animate.login.style.password.border = ``
       if (emptyPseudo) {
         this.header.css.animate.login.style.pseudo.border = `5px solid red`
       }
@@ -246,16 +287,23 @@ export default {
 .send{
   cursor:pointer;
   user-select:none;
+  margin-bottom:5px;
 }
 .connectPanel{
   background-color:black;
   width:136px;
-  height:130px;
+  height: auto;
   position:absolute;
   margin:0;
   padding:0;
   right:0;
   top:48px;
   z-index:1;
+}
+.ajouter, .modifier, .supprimer, .deconnection{
+  width: -webkit-fill-available;
+}
+.contentWeb{
+  height: auto;
 }
 </style>>
