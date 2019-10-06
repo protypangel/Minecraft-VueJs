@@ -33,6 +33,10 @@ Voici ce qui ce passe quand vous êtes déconnectez et rester sur le bouton se c
 ```
 npm run serve
 ```
+```
+nodemon server/server.js
+```
+
 
 ### Pour copier le projet
 
