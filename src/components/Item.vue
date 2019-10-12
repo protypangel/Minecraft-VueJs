@@ -1,37 +1,48 @@
-<!-- ./images/piocheDiamant.jpg -->
-<!--
-  https://www.npmjs.com/package/minecraft-items
-  https://forum.vuejs.org/t/decode-of-base-64-api-using-vuejs/18828
-  https://github.com/dizhar/resize-base64
-  <img :src="'data:image.png;base64,' + pioche_p.icon">
-  <img src="./images/piocheDiamant.jpg" width="150">
- -->
 <template>
   <div>
-      <div class="container" v-for="item in items" :key="item.id">
-        <img :src="'data:image.png;base64,' + pioche_p.icon" width="150">
-        <p>{{item.nom}}</p>
-      </div>
+    <table class="striped">
+      <thead>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Image</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr v-for="item in toolItems" :key="item.id">
+          <td>
+            {{item.name}}
+          </td>
+          <td>
+            {{item.ingredients}}
+          </td>
+          <td>
+            <img :src="item.icon">
+          </td>
+          <td class="lastCol">
+            {{item.description}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-// import resizebase64 from '../resize-base64.js'
-let myItems = require('../data/item.json')
-const minecraftItems = require('minecraft-items')
-const piochePierre = minecraftItems.get(274)
+const toolItems = require('../data/toolItems.json')
 
-// var myImage = resizebase64('dsf', 150, 150)
 export default {
   data () {
     return {
-      items: myItems,
-      pioche_p: piochePierre // image: myImage
+      toolItems,
+      headers: [
+        { text: 'Name', value: 'name' },
+        { text: 'Ingredients', value: 'ingredients' },
+        { text: 'Image', value: 'icon' },
+        { text: 'Description', value: 'description' }
+      ]
     }
   },
   created () {
-    console.log(this.items[0].image.visuel)
-    console.log('pioche : ', this.pioche_p)
   },
   computed: {
     imageURI: function () {
@@ -41,30 +52,25 @@ export default {
 }
 </script>
 <style scoped>
-
-  div .container {
-    border: 7px solid grey;
-    max-width: 15%;
-    height: auto;
-    width: auto;
-    margin: 20px;
-    border-radius: 10%;
-    box-sizing: border-box;
+  table {
+    margin-left: 30px;
+    margin-top: 30px;
+    border-left: 1px solid rgb(146, 189, 26);
+    border-bottom: 1px solid rgb(146, 189, 26);
+    border-top: 1px solid rgb(146, 189, 26);
+  }
+  td {
+    border: 2px solid rgb(146, 189, 26);
+    padding: 10px;
+    font-size: 1.2em;
+    max-width: 550px;
+    min-width: 250px;
     text-align: center;
   }
-  div .container img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    image-rendering: pixelated;
-  }
-  div .container p {
-    border: 4px solid green;
-    border-radius: 15%;
-    font-size: 1.5em;
-    display: inline-block;
-    padding: 3px;
-    box-sizing: border-box;
-    margin: 10px auto;
+  thead {
+    background-color: rgb(146, 189, 26);
+    color: #fff;
+    height: 60px;
+    font-size: 1.4em;
   }
 </style>
