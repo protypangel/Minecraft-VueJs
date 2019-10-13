@@ -8,7 +8,7 @@
         <th>Description</th>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in toolItems" :key="item.id">
+        <tr v-for="(item, index) in foodItems" :key="item.id">
           <td v-if="!item.enModif">
             {{item.name}}
           </td>
@@ -75,12 +75,12 @@
 </template>
 
 <script>
-const toolItems = require('../data/toolItems.json')
+const foodItems = require('../data/foodItems.json')
 
 export default {
   data () {
     return {
-      toolItems,
+      foodItems,
       headers: [
         { text: 'Name', value: 'name' },
         { text: 'Ingredients', value: 'ingredients' },
@@ -88,31 +88,26 @@ export default {
         { text: 'Description', value: 'description' }
       ],
       adminConnected: true,
-      newItem: { enModif: false, id: toolItems[toolItems.length - 1].id + 1, type: toolItems[0].type }
+      newItem: { enModif: false, id: foodItems[foodItems.length - 1].id + 1, type: foodItems[0].type }
     }
   },
   created () {
-    console.log(this.toolItems)
-  },
-  computed: {
-    imageURI: function () {
-      return `require(@/components/images/${this.items[0].image.visuel})`
-    }
+    console.log(this.foodItems)
   },
   methods: {
     editBtnClicked (index) {
-      this.toolItems[index].enModif = !this.toolItems[index].enModif
+      this.foodItems[index].enModif = !this.foodItems[index].enModif
     },
     saveBtnClicked (index) {
-      this.toolItems[index].enModif = !this.toolItems[index].enModif
+      this.foodItems[index].enModif = !this.foodItems[index].enModif
     },
     deleteBtnClicked (index) {
-      this.toolItems.splice(index, 1)
-      // console.log(this.toolItems)
+      this.foodItems.splice(index, 1)
+      // console.log(this.foodItems)
     },
     addElementBtnClicked () {
-      this.toolItems.push(this.newItem)
-      this.newItem = { enModif: false, id: toolItems[toolItems.length - 1].id + 1, type: toolItems[0].type }
+      this.foodItems.push(this.newItem)
+      this.newItem = { enModif: false, id: foodItems[foodItems.length - 1].id + 1, type: foodItems[0].type }
     }
   }
 }

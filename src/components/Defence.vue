@@ -8,7 +8,7 @@
         <th>Description</th>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in toolItems" :key="item.id">
+        <tr v-for="(item, index) in defenceItems" :key="item.id">
           <td v-if="!item.enModif">
             {{item.name}}
           </td>
@@ -75,12 +75,12 @@
 </template>
 
 <script>
-const toolItems = require('../data/toolItems.json')
+const defenceItems = require('../data/defenceItems.json')
 
 export default {
   data () {
     return {
-      toolItems,
+      defenceItems,
       headers: [
         { text: 'Name', value: 'name' },
         { text: 'Ingredients', value: 'ingredients' },
@@ -88,11 +88,11 @@ export default {
         { text: 'Description', value: 'description' }
       ],
       adminConnected: true,
-      newItem: { enModif: false, id: toolItems[toolItems.length - 1].id + 1, type: toolItems[0].type }
+      newItem: { enModif: false, id: defenceItems[defenceItems.length - 1].id + 1, type: defenceItems[0].type }
     }
   },
   created () {
-    console.log(this.toolItems)
+    console.log(this.defenceItems)
   },
   computed: {
     imageURI: function () {
@@ -101,18 +101,18 @@ export default {
   },
   methods: {
     editBtnClicked (index) {
-      this.toolItems[index].enModif = !this.toolItems[index].enModif
+      this.defenceItems[index].enModif = !this.defenceItems[index].enModif
     },
     saveBtnClicked (index) {
-      this.toolItems[index].enModif = !this.toolItems[index].enModif
+      this.defenceItems[index].enModif = !this.defenceItems[index].enModif
     },
     deleteBtnClicked (index) {
-      this.toolItems.splice(index, 1)
-      // console.log(this.toolItems)
+      this.defenceItems.splice(index, 1)
+      // console.log(this.defenceItems)
     },
     addElementBtnClicked () {
-      this.toolItems.push(this.newItem)
-      this.newItem = { enModif: false, id: toolItems[toolItems.length - 1].id + 1, type: toolItems[0].type }
+      this.defenceItems.push(this.newItem)
+      this.newItem = { enModif: false, id: defenceItems[defenceItems.length - 1].id + 1, type: defenceItems[0].type }
     }
   }
 }

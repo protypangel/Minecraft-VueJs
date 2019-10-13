@@ -24,29 +24,29 @@
     <v-app>
       <v-content>
         <Tools v-if="webConponentWatch === 0"/>
-        <Enchentment v-if="webConponentWatch === 1"/>
-        <Biome v-if="webConponentWatch === 2"/>
-        <Mobs  v-if="webConponentWatch === 3"/>
+        <Defence v-if="webConponentWatch === 1"/>
+        <Basics v-if="webConponentWatch === 2"/>
+        <Food  v-if="webConponentWatch === 3"/>
       </v-content>
     </v-app>
   </div>
 </template>
 
 <script>
-import Biome from './components/Biome'
-import Enchentment from './components/Enchentment'
+import Basics from './components/Basics'
+import Defence from './components/Defence'
 import Tools from './components/Tools'
-import Mobs from './components/Mobs'
+import Food from './components/Food'
 
 // var myJson = '{"result":true, "count":42}'
 // let myItems = JSON.parse('{"nom":"epee"}')
 export default {
   name: 'App',
   components: {
-    Biome,
-    Enchentment,
+    Basics,
+    Defence,
     Tools,
-    Mobs
+    Food
   },
   data: () => ({
     /* Differents style of the list's element */

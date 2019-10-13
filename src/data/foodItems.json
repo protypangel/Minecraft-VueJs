@@ -5,7 +5,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_bowl.png",
     "description":"Holds Mushroom Stew. ",
-    "ingredients":"Wooden Planks"
+    "ingredients":"Wooden Planks",
+    "enModif":false
   },
 
   {
@@ -14,7 +15,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_stew.png",
     "description":"Restores 4 hunger points. ",
-    "ingredients":"Bowl & Red Mushroom & Brown Mushroom"
+    "ingredients":"Bowl & Red Mushroom & Brown Mushroom",
+    "enModif":false
   },
 
   {
@@ -23,7 +25,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_bread.png",
     "description":"Restores 2.5 hunger points.",
-    "ingredients":"Wheat"
+    "ingredients":"Wheat",
+    "enModif":false
   },
 
   {
@@ -32,7 +35,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_goldenapple.png",
     "description":"Restores 2 hunger points. ",
-    "ingredients":"Apple & Gold Nuggets"
+    "ingredients":"Apple & Gold Nuggets",
+    "enModif":false
   },
 
   {
@@ -41,7 +45,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_enchantedgoldenapple.png",
     "description":"Restores 2 hunger points. Also gives resistance and fire resistance for 30 seconds. ",
-    "ingredients":"Apple & Gold Blocks"
+    "ingredients":"Apple & Gold Blocks",
+    "enModif":false
   },
 
   {
@@ -50,7 +55,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_sugar.png",
     "description":"Used to create Cake. ",
-    "ingredients":"Sugar Cane"
+    "ingredients":"Sugar Cane",
+    "enModif":false
   },
 
   {
@@ -59,7 +65,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_cake.png",
     "description":"Heals 1.5 hunger points per use for a total of 6 uses. ",
-    "ingredients":"Milk Buckets & Sugar & Wheat & Egg"
+    "ingredients":"Milk Buckets & Sugar & Wheat & Egg",
+    "enModif":false
   },
 
   {
@@ -68,7 +75,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_cookie.png",
     "description":"Restores 1 hunger point.",
-    "ingredients":"Wheat & Cocoa Beans"
+    "ingredients":"Wheat & Cocoa Beans",
+    "enModif":false
   },
 
   {
@@ -77,7 +85,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_melonblock.png",
     "description":"Method for storing melon slices. ",
-    "ingredients":"Melon Slice"
+    "ingredients":"Melon Slice",
+    "enModif":false
   },
 
   {
@@ -86,7 +95,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_melonseeds.png",
     "description":"Can be planted on farmland. ",
-    "ingredients":"Melon Slice"
+    "ingredients":"Melon Slice",
+    "enModif":false
   },
 
   {
@@ -95,7 +105,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_pumpkinseeds.png",
     "description":"Can be planted on farmland. ",
-    "ingredients":"Pumpkin"
+    "ingredients":"Pumpkin",
+    "enModif":false
   },
   
   {
@@ -104,7 +115,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_goldencarrot.png",
     "description":"Used as a brewing ingredient and restores 3 hunger points. ",
-    "ingredients":"Carrot & Gold Nuggets"
+    "ingredients":"Carrot & Gold Nuggets",
+    "enModif":false
   },
   
   {
@@ -113,7 +125,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_pumpkinpie.png",
     "description":"Restores 4 hunger points. ",
-    "ingredients":"Pumpkin & Egg & Sugar"
+    "ingredients":"Pumpkin & Egg & Sugar",
+    "enModif":false
   },
   
   {
@@ -122,7 +135,8 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_rabbitstew.png",
     "description":"Restores 10 hunger points. ",
-    "ingredients":"Mushroom & Bowl & Cooked Rabbit & Carrot & Baked Potato"
+    "ingredients":"Mushroom & Bowl & Cooked Rabbit & Carrot & Baked Potato",
+    "enModif":false
   },
   
   {
@@ -131,6 +145,7 @@
     "type":"food",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_suspiciousstew.png",
     "description":"Restores 6 hunger points. ",
-    "ingredients":"Red Mushroom & Brown Mushroom & Bowl & Any Flower"
+    "ingredients":"Red Mushroom & Brown Mushroom & Bowl & Any Flower",
+    "enModif":false
   }
 ]

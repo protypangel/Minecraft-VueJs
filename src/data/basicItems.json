@@ -5,7 +5,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_wood.gif",
     "description":"Basic building material.",
-    "ingredients":"Log"
+    "ingredients":"Log",
+    "enModif":false
   },
 
   {
@@ -14,7 +15,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_stick.png",
     "description":"Used to craft torches, arrows, fences, signs, tools and weapons. ",
-    "ingredients":"Wooden Planks"
+    "ingredients":"Wooden Planks",
+    "enModif":false
   },
 
   {
@@ -23,7 +25,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_torch.png",
     "description":"Torches provide light and also melt ice and snow.",
-    "ingredients":"Coal & Stick"
+    "ingredients":"Coal & Stick",
+    "enModif":false
   },
 
   {
@@ -32,7 +35,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_workbench.png",
     "description":"Opens a 3x3 crafting grid when right clicked. ",
-    "ingredients":"Wooden Planks"
+    "ingredients":"Wooden Planks",
+    "enModif":false
   },
 
   {
@@ -41,7 +45,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_furnace.png",
     "description":"Allows the player to smelt.",
-    "ingredients":"Cobblestone"
+    "ingredients":"Cobblestone",
+    "enModif":false
   },
 
   {
@@ -50,7 +55,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_chest.png",
     "description":"Used to store blocks and items. ",
-    "ingredients":"Wooden Planks"
+    "ingredients":"Wooden Planks",
+    "enModif":false
   },
 
   {
@@ -59,7 +65,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/new_craft_ladder.png",
     "description":"Allows the player to climb vertically. ",
-    "ingredients":"Sticks"
+    "ingredients":"Sticks",
+    "enModif":false
   },
 
   {
@@ -68,7 +75,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_fence.gif",
     "description":"Barrier that cannot be jumped over. ",
-    "ingredients":"Sticks & Wooden Planks"
+    "ingredients":"Sticks & Wooden Planks",
+    "enModif":false
   },
 
   {
@@ -77,7 +85,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_boat.png",
     "description":"Used to travel in water. ",
-    "ingredients":"Wooden Planks"
+    "ingredients":"Wooden Planks",
+    "enModif":false
   },
 
   {
@@ -86,7 +95,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_woodenslabs.gif",
     "description":"Used to create gradual slopes.",
-    "ingredients":"Wooden Planks"
+    "ingredients":"Wooden Planks",
+    "enModif":false
   },
   
   {
@@ -95,7 +105,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_stoneslabs.gif",
     "description":"Used to create gradual slopes.",
-    "ingredients":"Stone or Brick or Stone Brick or Sandstone or Cobblestone or Nether Brick or Quartz or Red Sandstone"
+    "ingredients":"Stone or Brick or Stone Brick or Sandstone or Cobblestone or Nether Brick or Quartz or Red Sandstone",
+    "enModif":false
   },
   
   {
@@ -104,7 +115,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_sign_new.png",
     "description":"Shows text. ",
-    "ingredients":"Wooden Planks & Stick"
+    "ingredients":"Wooden Planks & Stick",
+    "enModif":false
   },
   
   {
@@ -113,7 +125,8 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_doors.gif",
     "description":"Wooden doors can be opened by clicking or redstone power. Iron doors can only be opened by redstone power. ",
-    "ingredients":"Wooden Planks or Iron Ingots"
+    "ingredients":"Wooden Planks or Iron Ingots",
+    "enModif":false
   },
   
   {
@@ -122,6 +135,7 @@
     "type":"basic",
     "icon":"https://www.minecraftcrafting.info/imgs/craft_wood2.png",
     "description":"Block with log's texture on all sides. ",
-    "ingredients":"Logs"
+    "ingredients":"Logs",
+    "enModif":false
   }
 ]
