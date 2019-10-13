@@ -3,10 +3,10 @@
     <menu id="menu">
       <ul  v-bind:style="styleMenu">
         <!-- List's element -->
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(0)" v-on:mouseout="notHoverMenuElement(0)" v-on:click="changeWebContent(0)">Item</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(1)" v-on:mouseout="notHoverMenuElement(1)" v-on:click="changeWebContent(1)">Enchentment</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Biome</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(3)" v-on:mouseout="notHoverMenuElement(3)" v-on:click="changeWebContent(3)">Mobs</li>
+        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(0)" v-on:mouseout="notHoverMenuElement(0)" v-on:click="changeWebContent(0)">Tools</li>
+        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(1)" v-on:mouseout="notHoverMenuElement(1)" v-on:click="changeWebContent(1)">Basic</li>
+        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Defence</li>
+        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(3)" v-on:mouseout="notHoverMenuElement(3)" v-on:click="changeWebContent(3)">Food</li>
         <!-- If the person isn't connect -->
         <li v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()" v-on:click="connect()"> {{ admin.menu_text }}</li>
         <div v-if="admin.connect.panel.watch" v-bind:style="admin.connect.panel.style">
@@ -23,7 +23,7 @@
     <!-- Content page -->
     <v-app>
       <v-content>
-        <Item v-if="webConponentWatch === 0"/>
+        <Tools v-if="webConponentWatch === 0"/>
         <Enchentment v-if="webConponentWatch === 1"/>
         <Biome v-if="webConponentWatch === 2"/>
         <Mobs  v-if="webConponentWatch === 3"/>
@@ -35,7 +35,7 @@
 <script>
 import Biome from './components/Biome'
 import Enchentment from './components/Enchentment'
-import Item from './components/Item'
+import Tools from './components/Tools'
 import Mobs from './components/Mobs'
 
 // var myJson = '{"result":true, "count":42}'
@@ -43,10 +43,10 @@ import Mobs from './components/Mobs'
 export default {
   name: 'App',
   components: {
-    Biome, // Differents minecraft's biom
-    Enchentment, // Differents item's enchentment
-    Item, // Different's minecraft's item
-    Mobs // Different's minecraft's mobs
+    Biome,
+    Enchentment,
+    Tools,
+    Mobs
   },
   data: () => ({
     /* Differents style of the list's element */
