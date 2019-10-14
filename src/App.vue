@@ -4,8 +4,8 @@
       <ul  v-bind:style="styleMenu">
         <!-- List's element -->
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(0)" v-on:mouseout="notHoverMenuElement(0)" v-on:click="changeWebContent(0)">Tools</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(1)" v-on:mouseout="notHoverMenuElement(1)" v-on:click="changeWebContent(1)">Basic</li>
-        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Defence</li>
+        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(1)" v-on:mouseout="notHoverMenuElement(1)" v-on:click="changeWebContent(1)">Defence</li>
+        <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(2)" v-on:mouseout="notHoverMenuElement(2)" v-on:click="changeWebContent(2)">Basic</li>
         <li v-bind:style="styleMenuList" v-on:mouseover="hoverMenuElement(3)" v-on:mouseout="notHoverMenuElement(3)" v-on:click="changeWebContent(3)">Food</li>
         <!-- If the person isn't connect -->
         <li v-bind:style="admin.menu_style" v-on:mouseover="hoverAdminButton()" v-on:mouseout="notHoverAdminButton()" v-on:click="connect()"> {{ admin.menu_text }}</li>
@@ -23,32 +23,40 @@
     <!-- Content page -->
     <v-app>
       <v-content>
-        <Tools v-if="webConponentWatch === 0"/>
-        <Defence v-if="webConponentWatch === 1"/>
-        <Basics v-if="webConponentWatch === 2"/>
-        <Food  v-if="webConponentWatch === 3"/>
+        <Login></Login>
+      </v-content>
+      <v-content>
+        <ShowItems v-if="webConponentWatch === 0" :items="toolItems"/>
+        <ShowItems v-if="webConponentWatch === 1" :items="defenceItems"/>
+        <ShowItems v-if="webConponentWatch === 2" :items="basicItems"/>
+        <ShowItems  v-if="webConponentWatch === 3" :items="foodItems"/>
       </v-content>
     </v-app>
   </div>
 </template>
 
 <script>
-import Basics from './components/Basics'
-import Defence from './components/Defence'
-import Tools from './components/Tools'
-import Food from './components/Food'
+import ShowItems from '@/components/ShowItems'
+import Login from '@/components/Login'
+
+const basicItems = require('@/data/basicItems.json')
+const defenceItems = require('@/data/defenceItems.json')
+const toolItems = require('@/data/toolItems.json')
+const foodItems = require('@/data/foodItems.json')
 
 // var myJson = '{"result":true, "count":42}'
 // let myItems = JSON.parse('{"nom":"epee"}')
 export default {
   name: 'App',
   components: {
-    Basics,
-    Defence,
-    Tools,
-    Food
+    ShowItems,
+    Login
   },
   data: () => ({
+    basicItems,
+    defenceItems,
+    toolItems,
+    foodItems,
     /* Differents style of the list's element */
     styleMenu: { // Style of the list
       listStyleType: `none`,
@@ -196,27 +204,6 @@ export default {
       this.axios.post('http://localhost:4000/api/login', { username: 'moi', password: 'toi' })
         .then(jsondata => console.log(`response is:`, jsondata.data))
         .catch(error => console.log(`l'erreur est:`, error))
-    /*
-      const pseudo = document.getElementById('speudo').value
-      const password = document.getElementById('password').value
-      if (pseudo === `` || password === ``) {
-        if (pseudo === ``) {
-          this.admin.connect.panel.form.style[0].border = `5px solid red`
-        }
-        if (password === ``) {
-          this.admin.connect.panel.form.style[1].border = `5px solid red`
-        }
-      } else {
-        this.admin.connect.panel.form.style[0].border = `5px solid rgb(142,105,105)`
-        this.admin.connect.panel.form.style[1].border = `5px solid rgb(142,105,105)`
-        this.axios.post(this.admin.url.login, {
-          login: pseudo,
-          password: password
-        })
-          .then(jsondata => console.log(`response is:`, jsondata.data))
-          .catch(error => console.log(`l'erreur est:`, error))
-      }
-  */
     }
   }
 }

@@ -8,7 +8,7 @@ const app = express()
 
 /* */
 app.use(session({
-  secret: 'blablabla',
+  secret: 'le roi des pirates,ça sera moi',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // We arent in https but in http
