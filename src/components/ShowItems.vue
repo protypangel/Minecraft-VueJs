@@ -53,13 +53,6 @@ export default {
   props: ['items'],
   data () {
     return {
-      headers: [
-        { text: 'Name', value: 'name' },
-        { text: 'Ingredients', value: 'ingredients' },
-        { text: 'Image', value: 'icon' },
-        { text: 'Description', value: 'description' }
-      ],
-      adminConnected: true,
       newItem: { enModif: false, id: this.items[this.items.length - 1].id + 1, type: this.items[0].type }
     }
   },
@@ -81,6 +74,11 @@ export default {
       this.items.push(this.newItem)
       this.newItem = { enModif: false, id: this.items[this.items.length - 1].id + 1, type: this.items[0].type }
     }
+  },
+  computed: {
+    adminConnected () {
+      return this.$store.state.adminConnected
+    }
   }
 }
 </script>
@@ -89,10 +87,11 @@ export default {
   table {
     margin-left: auto;
     margin-right: auto;
-    border-left: 1px solid rgb(146, 189, 26);
+    border-left: 2px solid #6200EA;
+    /*border-collapse: collapse;*/
   }
   td {
-    border: 2px solid rgb(146, 189, 26);
+    border: 3px solid #6200EA;
     padding: 10px;
     font-size: 1.2em;
     max-width: 550px;
@@ -111,8 +110,8 @@ export default {
     margin-top: 20px;
   }
   thead {
-    background-color: rgb(146, 189, 26);
-    color: rgb(217, 240, 12);
+    background-color: #6200EA;
+    color: #FFF;
     height: 60px;
     font-size: 1.4em;
     text-transform: uppercase;
