@@ -74,7 +74,8 @@
   }
  */
 
- 250
- 550
- 204
- 500
+ <!--
+        <span class="font-weight-light">Todo</span>
+        <span>Ninja</span>
+        -->
+        <!--<v-icon right >mdi-exit-to-app</v-icon>-->

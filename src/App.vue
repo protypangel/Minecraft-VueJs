@@ -1,4 +1,6 @@
 <template>
+<v-app>
+<Navbar></Navbar>
   <div>
     <menu id="menu">
       <ul  v-bind:style="styleMenu">
@@ -21,7 +23,6 @@
       </ul>
     </menu>
     <!-- Content page -->
-    <v-app>
       <v-content>
         <Login></Login>
       </v-content>
@@ -31,13 +32,13 @@
         <ShowItems v-if="webConponentWatch === 2" :items="basicItems"/>
         <ShowItems  v-if="webConponentWatch === 3" :items="foodItems"/>
       </v-content>
+      </div>
     </v-app>
-  </div>
 </template>
 
 <script>
 import ShowItems from '@/components/ShowItems'
-import Login from '@/components/Login'
+import Navbar from '@/components/Navbar'
 
 const basicItems = require('@/data/basicItems.json')
 const defenceItems = require('@/data/defenceItems.json')
@@ -50,7 +51,7 @@ export default {
   name: 'App',
   components: {
     ShowItems,
-    Login
+    Navbar
   },
   data: () => ({
     basicItems,
