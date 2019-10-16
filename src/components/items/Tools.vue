@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     items () {
-      return this.$store.state.toolsItems
+      return this.$store.state.toolItems
     }
   }
 }
