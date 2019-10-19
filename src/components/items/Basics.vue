@@ -1,8 +1,9 @@
 <template>
-  <ShowItems :items="items"/>
+  <ShowItems :items="getBasicItems" @saveBtnClicked="updateBasic"/>
 </template>
 <script>
 import ShowItems from '@/components/ShowItems'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     ShowItems
@@ -12,9 +13,13 @@ export default {
     }
   },
   computed: {
-    items () {
-      return this.$store.state.basicItems
-    }
+    ...mapGetters(['getBasicItems'])
+  },
+  methods: {
+    ...mapActions(['initBasic', 'updateBasic'])
+  },
+  mounted () {
+    this.initBasic()
   }
 }
 </script>

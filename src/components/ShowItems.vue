@@ -8,7 +8,7 @@
         <th style="width:500px">Description</th>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in items" :key="item.id">
+        <tr v-for="(item, index) in items.items" :key="item.id">
           <!-- Tout ce qui s'affiche pour tout le monde -->
           <td v-if="!item.enModif">{{item.name}}</td>
           <td v-if="!item.enModif" id="tdIngredients">{{item.ingredients}}</td>
@@ -22,7 +22,7 @@
               <td><v-text-field label="Image URL" v-model="item.icon"></v-text-field></td>
               <td><v-text-field label="Description" v-model="item.description"></v-text-field></td>
               <!-- bouton validation modifs -->
-              <v-btn class="mx-2" fab dark small color="success" @click="item.enModif=false" v-if="item.enModif"><v-icon dark>mdi-check</v-icon></v-btn>
+              <v-btn class="mx-2" fab dark small color="success" @click="saveBtnClicked(index)" v-if="item.enModif"><v-icon dark>mdi-check</v-icon></v-btn>
             </template>
             <!-- bouton supprimer element -->
             <v-btn class="mx-2" fab dark small color="error" @click="deleteBtnClicked(index)"><v-icon dark>mdi-minus</v-icon></v-btn>
@@ -53,26 +53,31 @@ export default {
   props: ['items'],
   data () {
     return {
-      newItem: { enModif: false, id: this.items[this.items.length - 1].id + 1, type: this.items[0].type }
+      newItem: {}// enModif: false, id: this.items.items.length > 0 ? (this.items.items[this.items.items.length - 1].id + 1) : 1 }
     }
   },
   created () {
     console.log(this.items)
   },
   methods: {
-    editBtnClicked (index) {
-      this.items[index].enModif = !this.items[index].enModif
-    },
     saveBtnClicked (index) {
-      this.items[index].enModif = !this.items[index].enModif
+      this.items.items[index].enModif = !this.items.items[index].enModif
+      this.$emit('saveBtnClicked', this.items.items[index])
     },
     deleteBtnClicked (index) {
-      this.items.splice(index, 1)
+      this.items.items.splice(index, 1)
       // console.log(this.items)
     },
     addElementBtnClicked () {
-      this.items.push(this.newItem)
-      this.newItem = { enModif: false, id: this.items[this.items.length - 1].id + 1, type: this.items[0].type }
+      this.newItem.name = this.newItem.name || ''
+      this.newItem.icon = this.newItem.icon || ''
+      this.newItem.description = this.newItem.description || ''
+      this.newItem.ingredients = this.newItem.ingredients || ''
+      this.newItem.id = this.items.items.length > 0 ? (this.items.items[this.items.items.length - 1].id + 1) : 1
+      this.newItem.enModif = false
+      console.log(this.newItem)
+      this.items.items.push(this.newItem)
+      this.newItem = {}
     }
   },
   computed: {
@@ -99,7 +104,7 @@ export default {
     min-height: 140;
     text-align: center;
     color: rgb(8, 100, 80);
-    background: rgb(221, 226, 221);
+    background: #C6C6C6;
   }
   #tdIngredients {
     min-width: 400px;

@@ -1,151 +1,155 @@
-[
-  {
-    "id":"1",
-    "name":"Bowl",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_bowl.png",
-    "description":"Holds Mushroom Stew. ",
-    "ingredients":"Wooden Planks",
-    "enModif":false
-  },
-
-  {
-    "id":"2",
-    "name":"Mushroom Stew",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_stew.png",
-    "description":"Restores 4 hunger points. ",
-    "ingredients":"Bowl & Red Mushroom & Brown Mushroom",
-    "enModif":false
-  },
-
-  {
-    "id":"3",
-    "name":"Bread",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_bread.png",
-    "description":"Restores 2.5 hunger points.",
-    "ingredients":"Wheat",
-    "enModif":false
-  },
-
-  {
-    "id":"4",
-    "name":"Golden Apple",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_goldenapple.png",
-    "description":"Restores 2 hunger points. ",
-    "ingredients":"Apple & Gold Nuggets",
-    "enModif":false
-  },
-
-  {
-    "id":"5",
-    "name":"Enchanted Golden Apple",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_enchantedgoldenapple.png",
-    "description":"Restores 2 hunger points. Also gives resistance and fire resistance for 30 seconds. ",
-    "ingredients":"Apple & Gold Blocks",
-    "enModif":false
-  },
-
-  {
-    "id":"6",
-    "name":"Sugar",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_sugar.png",
-    "description":"Used to create Cake. ",
-    "ingredients":"Sugar Cane",
-    "enModif":false
-  },
-
-  {
-    "id":"7",
-    "name":"Cake",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_cake.png",
-    "description":"Heals 1.5 hunger points per use for a total of 6 uses. ",
-    "ingredients":"Milk Buckets & Sugar & Wheat & Egg",
-    "enModif":false
-  },
-
-  {
-    "id":"8",
-    "name":"Cookies",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_cookie.png",
-    "description":"Restores 1 hunger point.",
-    "ingredients":"Wheat & Cocoa Beans",
-    "enModif":false
-  },
-
-  {
-    "id":"9",
-    "name":"Melon Block",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_melonblock.png",
-    "description":"Method for storing melon slices. ",
-    "ingredients":"Melon Slice",
-    "enModif":false
-  },
-
-  {
-    "id":"10",
-    "name":"Melon Seeds",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_melonseeds.png",
-    "description":"Can be planted on farmland. ",
-    "ingredients":"Melon Slice",
-    "enModif":false
-  },
-
-  {
-    "id":"11",
-    "name":"Pumpkin Seeds",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_pumpkinseeds.png",
-    "description":"Can be planted on farmland. ",
-    "ingredients":"Pumpkin",
-    "enModif":false
-  },
-  
-  {
-    "id":"12",
-    "name":"Golden Carrot",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_goldencarrot.png",
-    "description":"Used as a brewing ingredient and restores 3 hunger points. ",
-    "ingredients":"Carrot & Gold Nuggets",
-    "enModif":false
-  },
-  
-  {
-    "id":"13",
-    "name":"Pumpkin Pie",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_pumpkinpie.png",
-    "description":"Restores 4 hunger points. ",
-    "ingredients":"Pumpkin & Egg & Sugar",
-    "enModif":false
-  },
-  
-  {
-    "id":"14",
-    "name":"Rabbit Stew",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_rabbitstew.png",
-    "description":"Restores 10 hunger points. ",
-    "ingredients":"Mushroom & Bowl & Cooked Rabbit & Carrot & Baked Potato",
-    "enModif":false
-  },
-  
-  {
-    "id":"15",
-    "name":"Suspicious Stew",
-    "type":"food",
-    "icon":"https://www.minecraftcrafting.info/imgs/craft_suspiciousstew.png",
-    "description":"Restores 6 hunger points. ",
-    "ingredients":"Red Mushroom & Brown Mushroom & Bowl & Any Flower",
-    "enModif":false
-  }
-]
+{
+  "items": 
+    [
+      {
+        "id":1,
+        "name":"Bowl",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_bowl.png",
+        "description":"Holds Mushroom Stew. ",
+        "ingredients":"Wooden Planks",
+        "enModif":false
+      },
+    
+      {
+        "id":2,
+        "name":"Mushroom Stew",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_stew.png",
+        "description":"Restores 4 hunger points. ",
+        "ingredients":"Bowl & Red Mushroom & Brown Mushroom",
+        "enModif":false
+      },
+    
+      {
+        "id":3,
+        "name":"Bread",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_bread.png",
+        "description":"Restores 2.5 hunger points.",
+        "ingredients":"Wheat",
+        "enModif":false
+      },
+    
+      {
+        "id":4,
+        "name":"Golden Apple",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_goldenapple.png",
+        "description":"Restores 2 hunger points. ",
+        "ingredients":"Apple & Gold Nuggets",
+        "enModif":false
+      },
+    
+      {
+        "id":5,
+        "name":"Enchanted Golden Apple",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_enchantedgoldenapple.png",
+        "description":"Restores 2 hunger points. Also gives resistance and fire resistance for 30 seconds. ",
+        "ingredients":"Apple & Gold Blocks",
+        "enModif":false
+      },
+    
+      {
+        "id":6,
+        "name":"Sugar",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_sugar.png",
+        "description":"Used to create Cake. ",
+        "ingredients":"Sugar Cane",
+        "enModif":false
+      },
+    
+      {
+        "id":7,
+        "name":"Cake",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_cake.png",
+        "description":"Heals 1.5 hunger points per use for a total of 6 uses. ",
+        "ingredients":"Milk Buckets & Sugar & Wheat & Egg",
+        "enModif":false
+      },
+    
+      {
+        "id":8,
+        "name":"Cookies",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_cookie.png",
+        "description":"Restores 1 hunger point.",
+        "ingredients":"Wheat & Cocoa Beans",
+        "enModif":false
+      },
+    
+      {
+        "id":9,
+        "name":"Melon Block",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_melonblock.png",
+        "description":"Method for storing melon slices. ",
+        "ingredients":"Melon Slice",
+        "enModif":false
+      },
+    
+      {
+        "id":10,
+        "name":"Melon Seeds",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_melonseeds.png",
+        "description":"Can be planted on farmland. ",
+        "ingredients":"Melon Slice",
+        "enModif":false
+      },
+    
+      {
+        "id":11,
+        "name":"Pumpkin Seeds",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_pumpkinseeds.png",
+        "description":"Can be planted on farmland. ",
+        "ingredients":"Pumpkin",
+        "enModif":false
+      },
+      
+      {
+        "id":12,
+        "name":"Golden Carrot",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_goldencarrot.png",
+        "description":"Used as a brewing ingredient and restores 3 hunger points. ",
+        "ingredients":"Carrot & Gold Nuggets",
+        "enModif":false
+      },
+      
+      {
+        "id":13,
+        "name":"Pumpkin Pie",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_pumpkinpie.png",
+        "description":"Restores 4 hunger points. ",
+        "ingredients":"Pumpkin & Egg & Sugar",
+        "enModif":false
+      },
+      
+      {
+        "id":14,
+        "name":"Rabbit Stew",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_rabbitstew.png",
+        "description":"Restores 10 hunger points. ",
+        "ingredients":"Mushroom & Bowl & Cooked Rabbit & Carrot & Baked Potato",
+        "enModif":false
+      },
+      
+      {
+        "id":15,
+        "name":"Suspicious Stew",
+        "type":"foodItems",
+        "icon":"https://www.minecraftcrafting.info/imgs/craft_suspiciousstew.png",
+        "description":"Restores 6 hunger points. ",
+        "ingredients":"Red Mushroom & Brown Mushroom & Bowl & Any Flower",
+        "enModif":false
+      }
+    ],
+  "type": "foodItems"
+}
