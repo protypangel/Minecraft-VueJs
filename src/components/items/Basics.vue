@@ -1,5 +1,5 @@
 <template>
-  <ShowItems :items="getBasicItems" @saveBtnClicked="updateBasic"/>
+  <ShowItems :items="getBasicItems.items" @saveBtnClicked="updateBasic"/>
 </template>
 <script>
 import ShowItems from '@/components/ShowItems'
@@ -16,10 +16,11 @@ export default {
     ...mapGetters(['getBasicItems'])
   },
   methods: {
-    ...mapActions(['initBasic', 'updateBasic'])
+    ...mapActions(['initBasic', 'updateBasic', 'isAdminConnected'])
   },
   mounted () {
     this.initBasic()
+    this.isAdminConnected()
   }
 }
 </script>

@@ -8,14 +8,14 @@
         <th style="width:500px">Description</th>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in items.items" :key="item.id">
+        <tr v-for="(item, index) in items" :key="item.id">
           <!-- Tout ce qui s'affiche pour tout le monde -->
           <td v-if="!item.enModif">{{item.name}}</td>
           <td v-if="!item.enModif" id="tdIngredients">{{item.ingredients}}</td>
           <td v-if="!item.enModif"><img :src="item.icon"></td>
           <td v-if="!item.enModif">{{item.description}}</td>
           <!-- Tout ce qui s'affiche que pour l'admin -->
-          <template v-if="adminConnected">
+          <template v-if="getAdminConnected">
             <template v-if="item.enModif">
               <td><v-text-field label="Name" v-model="item.name"></v-text-field></td>
               <td class="ingredientsCol"><v-text-field label="Ingredients" v-model="item.ingredients"></v-text-field></td>
@@ -33,7 +33,7 @@
           </template>
         </tr>
         <!-- Ligne qui permet d'ajouter un nouvel element -->
-        <tr v-if="adminConnected">
+        <tr v-if="getAdminConnected">
           <td><v-text-field label="Name" v-model="newItem.name"></v-text-field></td>
           <td class="ingredientsCol"><v-text-field label="Ingredients" v-model="newItem.ingredients"></v-text-field></td>
           <td><v-text-field label="Image URL" v-model="newItem.icon"></v-text-field></td>
@@ -49,23 +49,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: ['items'],
   data () {
     return {
-      newItem: {}// enModif: false, id: this.items.items.length > 0 ? (this.items.items[this.items.items.length - 1].id + 1) : 1 }
+      newItem: {}// enModif: false, id: this.items.length > 0 ? (this.items[this.items.length - 1].id + 1) : 1 }
     }
   },
-  created () {
-    console.log(this.items)
+  mounted () {
+    console.log('items recup dans showitems:', this.items)
   },
   methods: {
     saveBtnClicked (index) {
-      this.items.items[index].enModif = !this.items.items[index].enModif
-      this.$emit('saveBtnClicked', this.items.items[index])
+      this.items[index].enModif = !this.items[index].enModif
+      this.$emit('saveBtnClicked', this.items[index])
     },
     deleteBtnClicked (index) {
-      this.items.items.splice(index, 1)
+      this.items.splice(index, 1)
       // console.log(this.items)
     },
     addElementBtnClicked () {
@@ -73,17 +74,15 @@ export default {
       this.newItem.icon = this.newItem.icon || ''
       this.newItem.description = this.newItem.description || ''
       this.newItem.ingredients = this.newItem.ingredients || ''
-      this.newItem.id = this.items.items.length > 0 ? (this.items.items[this.items.items.length - 1].id + 1) : 1
+      this.newItem.id = this.items.length > 0 ? (this.items[this.items.length - 1].id + 1) : 1
       this.newItem.enModif = false
       console.log(this.newItem)
-      this.items.items.push(this.newItem)
+      this.items.push(this.newItem)
       this.newItem = {}
     }
   },
   computed: {
-    adminConnected () {
-      return this.$store.state.adminConnected
-    }
+    ...mapGetters(['getAdminConnected'])
   }
 }
 </script>

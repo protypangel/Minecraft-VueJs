@@ -9,11 +9,11 @@
             <v-toolbar-title class="white--text">Login Form</v-toolbar-title>
           </v-toolbar>
           <v-form class="px-3 ml-3 py-3">
-            <v-text-field class="mb-4" label="Login" v-model="login" prepend-icon="mdi-account"></v-text-field>
-            <v-text-field label="Password" type="password" v-model="password" prepend-icon="mdi-lock"></v-text-field>
+            <v-text-field class="mb-4" label="Name" v-model="infos.name" prepend-icon="mdi-account"></v-text-field>
+            <v-text-field label="Password" type="password" v-model="infos.password" prepend-icon="mdi-lock"></v-text-field>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="deep-purple accent-2" class=" white--text px-4 mb-1" @click="loginDialog = false">LOGIN</v-btn>
+              <v-btn color="deep-purple accent-2" class=" white--text px-4 mb-1" @click="validateBtnClicked(infos)">LOGIN</v-btn>
             </v-card-actions>
           </v-form>
 
@@ -23,13 +23,25 @@
 
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
       loginDialog: false,
-      login: '',
-      password: ''
+      infos: {
+        name: '',
+        password: ''
+      }
     }
+  },
+  methods: {
+    ...mapActions(['login']),
+    validateBtnClicked (infos) {
+      this.loginDialog = false
+      this.login(infos)
+    }
+  },
+  mounted () {
   }
 }
 </script>

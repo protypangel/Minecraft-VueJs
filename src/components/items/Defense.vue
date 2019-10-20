@@ -1,13 +1,10 @@
 <template>
-  <ShowItems :items="items"/>
+  <ShowItems :items="getDefenseItems.items" @saveBtnClicked="updateDefense"/>
 </template>
 <script>
 import ShowItems from '@/components/ShowItems'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  created () {
-    // this.$store.commit('toggleAdmin')
-    console.log(this.$store.state.adminConnected)
-  },
   components: {
     ShowItems
   },
@@ -16,9 +13,14 @@ export default {
     }
   },
   computed: {
-    items () {
-      return this.$store.state.defenseItems
-    }
+    ...mapGetters(['getDefenseItems'])
+  },
+  methods: {
+    ...mapActions(['initDefense', 'updateDefense', 'isAdminConnected'])
+  },
+  mounted () {
+    this.initDefense()
+    this.isAdminConnected()
   }
 }
 </script>
