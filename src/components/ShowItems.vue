@@ -12,7 +12,7 @@
           <!-- Tout ce qui s'affiche pour tout le monde -->
           <td v-if="!item.enModif">{{item.name}}</td>
           <td v-if="!item.enModif" id="tdIngredients">{{item.ingredients}}</td>
-          <td v-if="!item.enModif"><img :src="item.icon"></td>
+          <td v-if="!item.enModif"><img :src="item.icon" width="204px" height="112px"></td>
           <td v-if="!item.enModif">{{item.description}}</td>
           <!-- Tout ce qui s'affiche que pour l'admin -->
           <template v-if="getAdminConnected">
@@ -51,7 +51,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  props: ['items'],
+  props: ['items', 'itemsType'],
   data () {
     return {
       newItem: {}// enModif: false, id: this.items.length > 0 ? (this.items[this.items.length - 1].id + 1) : 1 }
@@ -66,7 +66,8 @@ export default {
       this.$emit('saveBtnClicked', this.items[index])
     },
     deleteBtnClicked (index) {
-      this.items.splice(index, 1)
+      // this.items.splice(index, 1)
+      this.$emit('deleteBtnClicked', this.items[index])
       // console.log(this.items)
     },
     addElementBtnClicked () {
@@ -74,10 +75,10 @@ export default {
       this.newItem.icon = this.newItem.icon || ''
       this.newItem.description = this.newItem.description || ''
       this.newItem.ingredients = this.newItem.ingredients || ''
-      this.newItem.id = this.items.length > 0 ? (this.items[this.items.length - 1].id + 1) : 1
       this.newItem.enModif = false
-      console.log(this.newItem)
-      this.items.push(this.newItem)
+      this.newItem.type = this.itemsType || 'basicItems'
+      this.$emit('addElementBtnClicked', this.newItem)
+      // this.items.push(this.newItem)
       this.newItem = {}
     }
   },

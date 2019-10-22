@@ -11,30 +11,37 @@ export default {
     isAdminConnected ({ rootState }) { axios.get('http://localhost:5000/api/items/basicItems').then((response) => { rootState.adminConnected = response.data.adminConnected }) },
     //
     /// /////////// Create ITEM
+    createItem ({ commit }, payload) {
+      // console.log(`et le lien: http://localhost:5000/api/items/${payload.type}`)
+      axios.post(`http://localhost:5000/api/items/${payload.type}`, payload)
+        .then(response => { commit('initItems', response.data) })
+        .catch(error => { console.log('erreur create: ', error.response.data) })
+    },
     /// /////////// Retrieve ITEMS
-    initBasic ({ commit }) { axios.get('http://localhost:5000/api/items/basicItems').then((response) => { commit('initBasic', response.data) }) },
-    initDefense ({ commit }) { axios.get('http://localhost:5000/api/items/defenseItems').then((response) => { commit('initDefense', response.data) }) },
-    initFood ({ commit }) { axios.get('http://localhost:5000/api/items/foodItems').then((response) => { commit('initFood', response.data) }) },
-    initTool ({ commit }) { axios.get('http://localhost:5000/api/items/toolItems').then((response) => { commit('initTool', response.data) }) },
+    initItems ({ commit }, payload) {
+      axios.get(`http://localhost:5000/api/items/${payload.whichItems}`)
+        .then((response) => { commit('initItems', response.data) })
+        .catch(error => { console.log(`erreur retrieve ${payload.whichItems} ${error.response.data}`) })
+    },
     /// /////////// UPDATE ITEMS
-    updateBasic ({ commit }, payload) { axios.put('http://localhost:5000/api/items/basicItems', payload).catch(error => commit('updateBasic', error.response.data)) },
-    updateDefense ({ commit }, payload) { axios.put('http://localhost:5000/api/items/defenseItems', payload).catch(error => commit('updateDefense', error.response.data)) },
-    updateFood ({ commit }, payload) { axios.put('http://localhost:5000/api/items/foodItems', payload).catch(error => commit('updateFood', error.response.data)) },
-    updateTool ({ commit }, payload) { axios.put('http://localhost:5000/api/items/toolItems', payload).catch(error => commit('updateTool', error.response.data)) }
+    updateItem ({ commit }, payload) {
+      axios.put(`http://localhost:5000/api/items/${payload.type}`, payload)
+        .catch(error => commit('updateItem', error.response.data))
+    },
     /// /////////// Delete  ITEM
+    deleteItem ({ commit }, payload) {
+      console.log('id payload recup:', payload.id)
+      // console.log(`et le lien: http://localhost:5000/api/items/${payload.type}`)
+      axios.delete(`http://localhost:5000/api/items/${payload.type}`)
+        .then(response => { commit('initItems', response.data) })
+        .catch(error => { console.log('erreur delete: ', error.response.data) })
+    }
   },
   mutations: {
-    /// /////////// Create ITEM
-    /// /////////// Retrieve ITEMS
-    initBasic (state, payload) { state.basicItems = payload },
-    initDefense (state, payload) { state.defenseItems = payload },
-    initFood (state, payload) { state.foodItems = payload },
-    initTool (state, payload) { state.toolItems = payload },
+    /// /////////// Create  Retrieve  (quand on create, on appelle aussi init pour maj)
+    initItems (state, payload) { state[payload.type] = payload },
     /// /////////// UPDATE ITEM
-    updateBasic (state, payload) { console.log('error lors de l\'update', payload) },
-    updateDefense (state, payload) { console.log('error lors de l\'update', payload) },
-    updateFood (state, payload) { console.log('error lors de l\'update', payload) },
-    updateTool (state, payload) { console.log('error lors de l\'update', payload) }
+    updateItem (state, payload) { console.log('error lors de l\'update', payload) }
     /// /////////// Delete  ITEM
   },
   getters: {
