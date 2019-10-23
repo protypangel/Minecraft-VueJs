@@ -1,0 +1,83 @@
+lime--text text--accent-3  title px-1
+color="green lighten-1" 
+<v-data-table
+    :headers="headers"
+    :items="toolItems"
+    :items-per-page="5"
+    class="elevation-1">
+    </v-data-table>
+
+<!-- ./images/piocheDiamant.jpg -->
+<!--
+  https://www.npmjs.com/package/minecraft-items
+  https://forum.vuejs.org/t/decode-of-base-64-api-using-vuejs/18828
+  https://github.com/dizhar/resize-base64
+  <img :src="'data:image.png;base64,' + pioche_p.icon">
+  <img src="./images/piocheDiamant.jpg" width="150">
+
+  <div class="container" v-for="item in foodItems" :key="item.id">
+        <img :src="item.icon" width="300" height="auto">
+        <p>{{item.name}}</p>
+  </div>
+ -->
+ .
+ <style>
+
+  div .container {
+    border: 7px solid grey;
+    max-width: 18%;
+    height: auto;
+    width: auto;
+    margin: 20px;
+    border-radius: 10%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  div .container img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    image-rendering: pixelated;
+  }
+  div .container p {
+    border: 4px solid green;
+    /*border-radius: 15%;*/
+    font-size: 1.5em;
+    display: inline-block;
+    padding: 3px;
+    box-sizing: border-box;
+    margin: 10px auto;
+  }
+ </style>
+ <script>
+  // const defenceItems = require('../data/defenceItems.json')
+  // const basicItems = require('../data/basicItems.json')
+  // const foodItems = require('../data/foodItems.json')
+  // var myImage = resizebase64('dsf', 150, 150)
+ </script>
+ https://www.minecraftcrafting.info/
+ http://www.craft-minecraft.fr/
+ /* boutons suppr et modif
+
+  <v-btn class="mx-2 deleteBtn" fab dark color="indigo">
+            <v-icon dark>mdi-minus</v-icon>
+          </v-btn>
+          <v-btn class="mx-2 modifyBtn" fab dark color="indigo">
+            <v-icon dark>mdi-pencil</v-icon>
+          </v-btn>
+
+
+.lastCol {
+    max-width: 500px;
+  }
+  .mx-2 {
+    display: block;
+    margin-top: 10px;
+  }
+ */
+
+ <!--
+        <span class="font-weight-light">Todo</span>
+        <span>Ninja</span>
+        -->
+        <!--<v-icon right >mdi-exit-to-app</v-icon>-->
