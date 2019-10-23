@@ -13,7 +13,7 @@ export default {
       // console.log(`et le lien: http://localhost:5000/api/items/${payload.type}`)
       axios.post(`http://localhost:5000/api/items/{"whichItems":"${payload.type}"}`, payload)
         .then(response => { commit('initItems', response.data) })
-        .catch(error => { rootState.adminConnected = false; console.log('erreur create: ', error.response.data) })
+        .catch(error => { console.log('erreur create: ', error.response.data) })
     },
     /// /////////// Retrieve ITEMS
     initItems ({ commit, rootState }, payload) {

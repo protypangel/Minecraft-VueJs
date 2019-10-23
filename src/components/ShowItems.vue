@@ -3,9 +3,9 @@
     <table class="my-5">
       <thead>
         <th style="width:250px">Name</th>
-        <th style="width:550px">Ingredients</th>
+        <th style="width:400px">Ingredients</th>
         <th style="width:204px">Image</th>
-        <th style="width:500px">Description</th>
+        <th style="width:400px">Description</th>
       </thead>
       <tbody>
         <tr v-for="(item, index) in items" :key="item.id">
@@ -43,8 +43,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- bouton pour valider updates -->
-    <div class="my-2 validation"><v-btn large color="primary" id="validateAllButton">Validate Changes</v-btn></div>
   </div>
 </template>
 
