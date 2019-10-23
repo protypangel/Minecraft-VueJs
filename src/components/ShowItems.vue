@@ -78,7 +78,6 @@ export default {
       this.newItem.enModif = false
       this.newItem.type = this.itemsType || 'basicItems'
       this.$emit('addElementBtnClicked', this.newItem)
-      // this.items.push(this.newItem)
       this.newItem = {}
     }
   },

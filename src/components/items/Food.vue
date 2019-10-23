@@ -1,5 +1,5 @@
 <template>
-  <ShowItems :items="getFoodItems.items" @saveBtnClicked="updateFood"/>
+  <ShowItems itemsType="foodItems" :items="getFoodItems.items" @deleteBtnClicked="deleteItem" @saveBtnClicked="updateItem" @addElementBtnClicked="createItem"/>
 </template>
 <script>
 import ShowItems from '@/components/ShowItems'
@@ -16,11 +16,10 @@ export default {
     ...mapGetters(['getFoodItems'])
   },
   methods: {
-    ...mapActions(['initFood', 'updateFood', 'isAdminConnected'])
+    ...mapActions(['initItems', 'updateItem', 'createItem', 'deleteItem'])
   },
   mounted () {
-    this.initFood()
-    this.isAdminConnected()
+    this.initItems({ whichItems: 'foodItems' })
   }
 }
 </script>

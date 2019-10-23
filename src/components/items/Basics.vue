@@ -1,5 +1,5 @@
 <template>
-  <ShowItems :itemsType="basicItems" :items="getBasicItems.items" @deleteBtnClicked="deleteItem" @saveBtnClicked="updateItem" @addElementBtnClicked="createItem"/>
+  <ShowItems itemsType="basicItems" :items="getBasicItems.items" @deleteBtnClicked="deleteItem" @saveBtnClicked="updateItem" @addElementBtnClicked="createItem"/>
 </template>
 <script>
 import ShowItems from '@/components/ShowItems'
@@ -10,18 +10,16 @@ export default {
   },
   data () {
     return {
-      basicItems: 'basicItems'
     }
   },
   computed: {
     ...mapGetters(['getBasicItems'])
   },
   methods: {
-    ...mapActions(['initItems', 'updateItem', 'createItem', 'deleteItem', 'isAdminConnected'])
+    ...mapActions(['initItems', 'updateItem', 'createItem', 'deleteItem'])
   },
   created () {
     this.initItems({ whichItems: 'basicItems' })
-    this.isAdminConnected()
   }
 }
 </script>
