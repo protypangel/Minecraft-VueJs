@@ -5,7 +5,7 @@
         <v-img class="ml-12" :src=getAdminInfos.icon></v-img>
       </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title class="white--text ml-6 headline">{{getAdminInfos.name}}</v-list-item-title>
+        <v-list-item-title class="white--text text-uppercase ml-6 headline">{{getAdminInfos.name}}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
     <div class="pa-4 mt-4">
