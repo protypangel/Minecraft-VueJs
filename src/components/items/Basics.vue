@@ -2,7 +2,7 @@
   <ShowItems itemsType="basicItems" :items="getBasicItems.items" @deleteBtnClicked="deleteItem" @saveBtnClicked="updateItem" @addElementBtnClicked="createItem"/>
 </template>
 <script>
-import ShowItems from '@/components/ShowItems'
+import ShowItems from './ShowItems'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
