@@ -1,37 +1,34 @@
 import axios from 'axios'
 export default {
   state: {
-    user: {
-      name: '',
-      icon: ''
-    },
-    drawer: false
+    errorMessage: '',
+    closeConnectionDialog: false
   },
   actions: {
-    toggleDrawer ({ commit }) { commit('toggleDrawer') },
     login ({ commit, rootState }, payload) {
-      axios.post('http://localhost:5000/api/connection/login', payload).then(response => { rootState.adminConnected = true; commit('login', response.data) }).catch(error => commit('login', error.response.data))
+      axios.post(`${rootState.apiURL}/api/connection/login`, payload)
+        .then(response => {
+          rootState.adminConnected = true
+          commit('login', response.data)
+          rootState.user = response.data.infos
+        })
+        .catch(error => commit('login', error.response.data))
     },
-    logout ({ commit, rootState }) {
-      axios.post('http://localhost:5000/api/connection/logout')
-        .then(response => { rootState.adminConnected = false; commit('logout') })
+    logout ({ rootState }) {
+      axios.post(`${rootState.apiURL}/api/connection/logout`)
+        .then(response => { rootState.adminConnected = false; rootState.drawer = false; this.closeConnectionDialog = true })
         .catch(error => console.log(error.response.data))
     }
   },
   mutations: {
-    toggleDrawer (state) {
-      state.drawer = !state.drawer
-    },
     login (state, payload) {
+      if (payload.error) state.errorMessage = payload
+      else state.errorMessage = ''
       console.log('essaie login, serv renvoi:', payload)
-      if (!payload.error) state.user = payload.infos
-    },
-    logout (state) {
-      state.drawer = false
     }
   },
   getters: {
-    getAdminInfos (state) { return state.user },
-    getDrawerStatus (state) { return state.drawer }
+    getErrorMessage (state) { return state.errorMessage },
+    getCloseConnectionDialog (state) { return state.closeConnectionDialog }
   }
 }

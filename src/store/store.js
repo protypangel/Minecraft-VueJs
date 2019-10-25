@@ -2,25 +2,35 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import itemsModule from './modules/items'
 import connectionModule from './modules/connection'
-// import axios from 'axios'
 Vue.use(Vuex)
-// plus tard utiliser axios pour recup ces données de l'api
-/* const basicItems = require('@/data/basicItems.json')
-const defenseItems = require('@/data/defenseItems.json')
-const toolItems = require('@/data/toolItems.json')
-const foodItems = require('@/data/foodItems.json') */
 
 export const store = new Vuex.Store({
   state: {
-    adminConnected: false
+    adminConnected: false,
+    user: {
+      name: '',
+      icon: ''
+    },
+    drawer: false,
+    apiURL: 'http://192.168.1.23:5000'//    192.168.1.23
   },
   modules: {
     itemsModule,
     connectionModule
   },
+  actions: {
+    toggleDrawer ({ commit }) { commit('toggleDrawer') }
+  },
+  mutations: {
+    toggleDrawer (state) {
+      state.drawer = !state.drawer
+    }
+  },
   getters: {
     getAdminConnected (state) {
       return state.adminConnected
-    }
+    },
+    getDrawerStatus (state) { return state.drawer },
+    getAdminInfos (state) { return state.user }
   }
 })
