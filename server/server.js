@@ -17,7 +17,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   name: 'mysid',
-  cookie: { secure: false, maxAge: 1000 * 30 }
+  cookie: { secure: false }
 }))
 // middleware
 app.use(express.json()) // body parser middleware
