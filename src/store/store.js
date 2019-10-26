@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
       icon: ''
     },
     drawer: false,
-    apiURL: 'http://192.168.1.23:5000'//    192.168.1.23
+    apiURL: ''//    192.168.1.23:5000
   },
   modules: {
     itemsModule,
