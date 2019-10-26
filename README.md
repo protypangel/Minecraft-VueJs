@@ -14,18 +14,6 @@ Si ce site internet nécessite des explications ses différents composants, c'es
 Mais si vous le faites comme même alors le site vous afficheras ceux-ci
 
 <img src="README/image/disable_javascript.png">
-
- - Sur le bouttons admin
- 
-Voici ce qui ce passe quand vous êtes déconnectez et rester sur le bouton se connectez 
-
-<img src="README/image/button_hover.gif"/>
-
- - Sur le menu
- 
- Voici ce qui ce passe quand vous passez d'un element à un autre
- 
- <img src="README/image/menu_hover.gif"/>
  
 ## Commandes
 ### Lancer le server
