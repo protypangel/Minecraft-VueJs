@@ -5,7 +5,7 @@ const logger = require('./middleware/logger.js')
 const cors = require('cors')
 const path = require('path')
 // const setHeaderJson = require('./middleware/setHeaderJson')
-let whitelist = ['http://localhost:8080', 'http://192.168.1.23:8080', 'http://86.247.168.135:8080']
+let whitelist = ['http://localhost:8080', 'http://192.168.1.23:8080']
 app.use(cors({
   credentials: true,
   origin: whitelist
