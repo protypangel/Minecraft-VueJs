@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const session = require('express-session')
-const logger = require('./middleware/logger.js')
 const cors = require('cors')
 const path = require('path')
 // const setHeaderJson = require('./middleware/setHeaderJson')
@@ -24,7 +23,6 @@ app.use(express.json()) // body parser middleware
 app.use(express.urlencoded({ extended: false })) // form submission
 //
 
-app.use(logger)
 app.use((req, res, next) => {
   res.rep = {}
   req.whichItems = {}

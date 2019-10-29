@@ -8,7 +8,6 @@ export default {
     addElementError: ''
   },
   actions: {
-    // si on refresh, après s'être connecté => on continue d'avoir les boutons d'admin
     /// /////////// Create ITEM
     createItem ({ commit, rootState }, payload) {
       // console.log(`et le lien: ${rootState.apiURL}/api/items/${payload.type}`)
@@ -22,7 +21,7 @@ export default {
         .then((response) => {
           commit('initItems', response.data)
           rootState.adminConnected = response.data.adminConnected
-          console.log(response.data)
+          // console.log(response.data)
           if (response.data.infos) rootState.user = response.data.infos
         })
         .catch(error => { console.log(`erreur retrieve ${payload.whichItems} ${error.response.data}`) })
@@ -34,10 +33,20 @@ export default {
     },
     /// /////////// Delete  ITEM
     deleteItem ({ commit, rootState }, payload) {
-      console.log('id payload recup:', payload.id)
+      // console.log('id payload recup:', payload.id)
       axios.delete(`${rootState.apiURL}/api/items/{"id":${payload.id},"whichItems":"${payload.type}"}`)
         .then(response => { commit('initItems', response.data) })
         .catch(error => { rootState.adminConnected = false; console.log('erreur delete: ', error.response.data) })
+    },
+    //
+    saveChanges ({ rootState }) {
+      axios.post(`${rootState.apiURL}/api/items/{"whichItems":"save"}`)
+        .catch(error => { console.log('erreur save: ', error.response.data) })
+    },
+    cancelChanges ({ commit, rootState }) {
+      axios.post(`${rootState.apiURL}/api/items/{"whichItems":"cancel"}`)
+        .then(response => { commit('cancelChanges', response.data); console.log(response.data) })
+        .catch(error => { console.log('erreur cancel: ', error.response.data) })
     }
   },
   mutations: {
@@ -56,8 +65,14 @@ export default {
     updateItem (state, payload) {
       payload.item.enModif = true
       console.log('error lors de l\'update', payload.error)
+    },
+    /// ///////////
+    cancelChanges (state, payload) {
+      state['basicItems'] = payload.basicItems
+      state['defenseItems'] = payload.defenseItems
+      state['foodItems'] = payload.foodItems
+      state['toolItems'] = payload.toolItems
     }
-    /// /////////// Delete  ITEM
   },
   getters: {
     getBasicItems (state) { return state.basicItems },
